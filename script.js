@@ -30,12 +30,17 @@ menuToggle?.addEventListener('click', () => {
 });
 nav?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
 
-document.querySelectorAll('.magnetic').forEach((btn) => {
-  btn.addEventListener('pointermove', (e) => {
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    btn.style.transform = `translate(${x * .08}px, ${y * .14}px)`;
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  document.querySelectorAll('.magnetic').forEach((btn) => {
+    btn.addEventListener('pointermove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * .08}px, ${y * .14}px)`;
+    });
+
+    btn.addEventListener('pointerleave', () => {
+      btn.style.transform = '';
+    });
   });
-  btn.addEventListener('pointerleave', () => { btn.style.transform = ''; });
-});
+}
