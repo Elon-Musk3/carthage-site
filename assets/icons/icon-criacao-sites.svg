@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="grad-criacao" x1="8" y1="8" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#63D7FF"/>
+      <stop offset="1" stop-color="#66F0B5"/>
+    </linearGradient>
+  </defs>
+  <rect x="7" y="9" width="34" height="22" rx="4" stroke="url(#grad-criacao)" stroke-width="2.5"/>
+  <path d="M7 16H41" stroke="url(#grad-criacao)" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="12.5" cy="12.5" r="1.2" fill="url(#grad-criacao)"/>
+  <circle cx="16.5" cy="12.5" r="1.2" fill="url(#grad-criacao)"/>
+  <path d="M14 22H22" stroke="url(#grad-criacao)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M14 27H19" stroke="url(#grad-criacao)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M28 22H34" stroke="url(#grad-criacao)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M28 27H31" stroke="url(#grad-criacao)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M18 36H30" stroke="url(#grad-criacao)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M22 31V36" stroke="url(#grad-criacao)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M26 31V36" stroke="url(#grad-criacao)" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

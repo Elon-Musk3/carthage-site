@@ -1,40 +1,48 @@
-# Checklist de publicação — Carthage
+# Checklist de publicação
 
-## 1. Antes de enviar ao GitHub
+## Configuração
 
-- [ ] Confirmar que o telefone é `(62) 99981-0066`.
-- [ ] Abrir o site com Live Server.
-- [ ] Testar os botões de WhatsApp.
-- [ ] Abrir as três páginas legais.
-- [ ] Testar em desktop e celular.
-- [ ] Executar o roteiro de `TESTE-CONSENTIMENTO.md`.
-- [ ] Inserir o ID do GA4 em `privacy-config.js`, caso já exista.
+- [ ] Confirmar dados em `js/config.js`.
+- [ ] Confirmar se a promoção continua verdadeira.
+- [ ] Manter o estudo de caso desativado sem autorização.
+- [ ] Inserir URL real do aplicativo somente quando existir.
+- [ ] Inserir vídeo e trilha somente com autorização/licença.
+- [ ] Não inserir ID de Google Analytics fictício.
 
-## 2. Publicação
+## Navegação
 
-- [ ] Copiar todos os arquivos e pastas para o repositório.
-- [ ] Não remover `consent.js`, `consent.css` ou `privacy-config.js`.
+- [ ] Testar todas as páginas e links internos.
+- [ ] Testar mega menu por mouse, teclado e Escape.
+- [ ] Testar menu mobile e acordeões.
+- [ ] Testar breadcrumbs, relacionados, rodapé e voltar ao topo.
+
+## Campanhas
+
+- [ ] Abrir `iniciar-projeto.html` com UTMs.
+- [ ] Abrir `aplicativo.html` com UTMs.
+- [ ] Abrir `promocao.html` com UTMs.
+- [ ] Confirmar preservação durante a sessão.
+- [ ] Confirmar mensagens diferentes no WhatsApp.
+- [ ] Confirmar Pixel somente após consentimento.
+
+## Formulários
+
+- [ ] Testar campos obrigatórios e mensagens de erro.
+- [ ] Testar acentos e caracteres especiais.
+- [ ] Confirmar que nenhum envio para servidor é simulado.
+- [ ] Confirmar abertura do WhatsApp após validação.
+
+## Responsividade
+
+- [ ] 320px, 360px, 375px, 390px, 412px e 430px.
+- [ ] 768px, 820px e 1024px.
+- [ ] 1280px, 1366px, 1440px, 1920px e ultrawide.
+- [ ] Sem overflow horizontal, cortes ou sobreposições.
+
+## Produção
+
+- [ ] Fazer backup do projeto anterior.
+- [ ] Substituir os arquivos no repositório.
 - [ ] Fazer commit e push.
-- [ ] Aguardar a hospedagem concluir o deploy.
-
-## 3. Verificação no domínio
-
-- [ ] Abrir `https://carthage.com.br/`.
-- [ ] Abrir `https://carthage.com.br/legal/privacidade.html`.
-- [ ] Abrir `https://carthage.com.br/legal/cookies.html`.
-- [ ] Abrir `https://carthage.com.br/legal/termos.html`.
-- [ ] Confirmar que imagens, estilos e scripts carregam.
-- [ ] Confirmar que o banner aparece em janela anônima.
-
-## 4. Meta
-
-- [ ] Usar a URL `https://carthage.com.br/legal/privacidade.html` no formulário de Leads.
-- [ ] Confirmar que o Meta Pixel só aparece após aceitar “Publicitários”.
-- [ ] Fazer um lead de teste antes de ativar a campanha.
-
-## 5. Atualizações futuras
-
-- [ ] Inserir o CNPJ quando for emitido.
-- [ ] Atualizar a data das políticas quando houver mudanças.
-- [ ] Acrescentar novos fornecedores utilizados.
-- [ ] Revisar retenção e segurança quando o volume de dados crescer.
+- [ ] Verificar deploy na Vercel.
+- [ ] Testar domínio, SSL, sitemap, robots e 404.

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="grad-cookies" x1="7" y1="8" x2="41" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#63D7FF"/>
+      <stop offset="1" stop-color="#66F0B5"/>
+    </linearGradient>
+  </defs>
+  <path d="M24 10.5C24.1 13 26.2 15 28.8 15C29.8 15 30.7 14.7 31.5 14.1C31.8 14 32.1 14.1 32.2 14.4C33.4 16.3 35.5 17.5 37.8 17.5C38 17.5 38.2 17.7 38.2 17.9C38.2 27 30.9 34.5 22 34.5C14 34.5 9.8 28.6 9.8 22.5C9.8 15.9 15.1 10.5 21.8 10.5H24Z" stroke="url(#grad-cookies)" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="18" cy="18.5" r="1.7" fill="url(#grad-cookies)"/>
+<circle cx="16.5" cy="25" r="1.7" fill="url(#grad-cookies)"/>
+<circle cx="23.5" cy="22" r="1.7" fill="url(#grad-cookies)"/>
+<circle cx="27.5" cy="29" r="1.7" fill="url(#grad-cookies)"/>
+<path d="M31.5 11.5L34.5 8.5" stroke="url(#grad-cookies)" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+</svg>
