@@ -76,7 +76,7 @@
 
     const completeMessage = `${String(message || '').trim()}${attributionLabel()}`;
     trackEvent('WhatsAppClick', { context });
-    trackEvent('Contact', { channel: 'whatsapp', context });
+    trackEvent('ContactIntent', { channel: 'whatsapp', context });
     window.open(`https://wa.me/${config.whatsappNumber}?text=${encodeURIComponent(completeMessage)}`, '_blank', 'noopener,noreferrer');
   };
 

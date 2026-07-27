@@ -136,41 +136,17 @@
 
     if (document.body.dataset.page === 'promocao') {
       window.CARTHAGE_TRACKING?.trackEvent('PromotionView', { remainingSlots: config.remainingSlots });
-      if (!config.enabled) document.querySelector('[data-promotion-ended]')?.removeAttribute('hidden');
+      const ended = document.querySelector('[data-promotion-ended]');
+      if (config.enabled) {
+        if (ended) ended.hidden = true;
+      } else {
+        document.querySelectorAll('main > section:not([data-promotion-ended])').forEach(section => { section.hidden = true; });
+        if (ended) ended.hidden = false;
+      }
     }
     document.querySelectorAll('[data-promotion-click]').forEach(button => button.addEventListener('click', () => {
       window.CARTHAGE_TRACKING?.trackEvent('PromotionClick', { remainingSlots: config.remainingSlots });
     }));
-  };
-
-  const initAppExperience = () => {
-    const appButtons = document.querySelectorAll('[data-app-open]');
-    if (!appButtons.length) return;
-    window.CARTHAGE_TRACKING?.trackEvent('AppView');
-    appButtons.forEach((button) => {
-      const appUrl = window.SITE_CONFIG?.appUrl?.trim();
-      button.textContent = appUrl ? 'Abrir aplicativo' : 'Solicitar acesso à experiência';
-      button.addEventListener('click', (event) => {
-        event.preventDefault();
-        window.CARTHAGE_TRACKING?.trackEvent('AppOpenClick', { configured: Boolean(appUrl) });
-        if (appUrl) window.open(appUrl, '_blank', 'noopener,noreferrer');
-        else window.CARTHAGE_TRACKING?.openWhatsApp('Olá! Acessei a página do aplicativo da Carthage e gostaria de solicitar o acesso oficial.', 'aplicativo');
-      });
-    });
-
-    const video = document.querySelector('[data-app-video]');
-    const sourceMp4 = window.MEDIA_CONFIG?.appVideoMp4;
-    const sourceWebm = window.MEDIA_CONFIG?.appVideoWebm;
-    if (video && (sourceMp4 || sourceWebm)) {
-      if (sourceWebm) {
-        const source = document.createElement('source'); source.src = sourceWebm; source.type = 'video/webm'; video.appendChild(source);
-      }
-      if (sourceMp4) {
-        const source = document.createElement('source'); source.src = sourceMp4; source.type = 'video/mp4'; video.appendChild(source);
-      }
-      video.hidden = false;
-      document.querySelector('[data-video-pending]')?.setAttribute('hidden', '');
-    }
   };
 
   const initProjectGate = () => {
@@ -198,7 +174,6 @@
   initResponsiveDemo();
   initProcessTimeline();
   initPromotion();
-  initAppExperience();
   initProjectGate();
   initServiceTracking();
 })();

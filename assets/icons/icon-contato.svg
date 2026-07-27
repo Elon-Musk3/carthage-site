@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="contact-gradient" x1="7" y1="8" x2="41" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#63D7FF"/>
+      <stop offset="1" stop-color="#66F0B5"/>
+    </linearGradient>
+  </defs>
+  <path d="M8 10.5H40V33.5H23L14 40V33.5H8V10.5Z" stroke="url(#contact-gradient)" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M15 18H33M15 23H29M15 28H24" stroke="url(#contact-gradient)" stroke-width="2.4" stroke-linecap="round"/>
+</svg>

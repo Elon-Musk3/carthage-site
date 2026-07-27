@@ -1,48 +1,20 @@
 # Checklist de publicação
 
-## Configuração
-
-- [ ] Confirmar dados em `js/config.js`.
-- [ ] Confirmar se a promoção continua verdadeira.
-- [ ] Manter o estudo de caso desativado sem autorização.
-- [ ] Inserir URL real do aplicativo somente quando existir.
-- [ ] Inserir vídeo e trilha somente com autorização/licença.
-- [ ] Não inserir ID de Google Analytics fictício.
-
-## Navegação
-
-- [ ] Testar todas as páginas e links internos.
-- [ ] Testar mega menu por mouse, teclado e Escape.
-- [ ] Testar menu mobile e acordeões.
-- [ ] Testar breadcrumbs, relacionados, rodapé e voltar ao topo.
-
-## Campanhas
-
-- [ ] Abrir `iniciar-projeto.html` com UTMs.
-- [ ] Abrir `aplicativo.html` com UTMs.
-- [ ] Abrir `promocao.html` com UTMs.
-- [ ] Confirmar preservação durante a sessão.
-- [ ] Confirmar mensagens diferentes no WhatsApp.
-- [ ] Confirmar Pixel somente após consentimento.
-
-## Formulários
-
-- [ ] Testar campos obrigatórios e mensagens de erro.
-- [ ] Testar acentos e caracteres especiais.
-- [ ] Confirmar que nenhum envio para servidor é simulado.
-- [ ] Confirmar abertura do WhatsApp após validação.
-
-## Responsividade
-
-- [ ] 320px, 360px, 375px, 390px, 412px e 430px.
-- [ ] 768px, 820px e 1024px.
-- [ ] 1280px, 1366px, 1440px, 1920px e ultrawide.
-- [ ] Sem overflow horizontal, cortes ou sobreposições.
-
-## Produção
-
-- [ ] Fazer backup do projeto anterior.
-- [ ] Substituir os arquivos no repositório.
-- [ ] Fazer commit e push.
-- [ ] Verificar deploy na Vercel.
-- [ ] Testar domínio, SSL, sitemap, robots e 404.
+- [ ] Criar cópia recuperável da versão publicada atualmente.
+- [ ] Confirmar titularidade do domínio, DNS, hospedagem e repositório.
+- [ ] Substituir os arquivos preservando a estrutura de pastas.
+- [ ] Testar as 19 rotas, a página 404, links internos e âncoras.
+- [ ] Testar menu, FAQs, formulários, WhatsApp e retorno de foco por teclado.
+- [ ] Percorrer rapidamente Soluções → Projetos → Carthage no desktop e confirmar que somente a primeira categoria distribui itens; as seguintes devem substituir o conteúdo sem novo escalonamento.
+- [ ] Conferir revelações de textos, cartões e mídias ao descer e subir a página, sem saltos de layout.
+- [ ] Conferir desktop, tablet e celular sem rolagem horizontal.
+- [ ] Validar título, descrição, canonical, Open Graph, sitemap e robots.
+- [ ] Confirmar que GA4 e Meta Pixel só carregam após consentimento aplicável.
+- [ ] Confirmar disponibilidade e valores da promoção antes de publicar.
+- [x] Obter autorização do cliente para as telas e gravações do portfólio.
+- [ ] Conferir o loop em Chrome, Edge, Safari e Firefox, em desktop e celular reais.
+- [ ] Confirmar que o vídeo mobile é selecionado abaixo de 700 px e o desktop acima desse ponto.
+- [ ] Testar o loop automático, economia de dados e a preferência de movimento reduzido.
+- [ ] Com movimento reduzido ativado, confirmar que nenhum texto fica transparente, borrado ou deslocado e que profundidade e magnetismo são desativados.
+- [ ] Manter `aplicativo.html` fora da navegação e do sitemap enquanto não existir produto real.
+- [ ] Revisar políticas com profissional jurídico responsável.

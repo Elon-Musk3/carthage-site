@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /projeto-darcio-eloi.html
 
 Sitemap: https://www.carthage.com.br/sitemap.xml

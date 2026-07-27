@@ -71,8 +71,7 @@
           return;
         }
         status.textContent = 'Abrindo o WhatsApp com o diagnóstico preenchido.';
-        window.CARTHAGE_TRACKING?.trackEvent('FormSubmit', { form: form.id || 'diagnostic' });
-        window.CARTHAGE_TRACKING?.trackEvent('Lead', { source: 'whatsapp-form', form: form.id || 'diagnostic' });
+        window.CARTHAGE_TRACKING?.trackEvent('FormPrepared', { form: form.id || 'diagnostic' });
         window.CARTHAGE_TRACKING?.openWhatsApp(buildMessage(form), form.dataset.context || 'formulario');
       });
     });

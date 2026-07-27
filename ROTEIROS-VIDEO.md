@@ -1,29 +1,30 @@
-# Roteiros-base para campanhas da Carthage
+# Direção de vídeo futuro — Carthage
 
-## Campanha de contato direto — 15 segundos
+O site atual não exibe player falso nem pôster com botão de reprodução. Este roteiro é para uma produção futura real.
 
-- 0–3s: “Seu negócio ainda depende apenas das redes sociais?”
-- 3–7s: mostrar páginas reais e responsividade.
-- 7–11s: “Construa uma presença digital própria, clara e conectada ao WhatsApp.”
-- 11–15s: logo oficial e CTA “Começar um projeto”.
+## Filme principal silencioso — 24 a 30 segundos
 
-## Aplicativo e experiência — 20 segundos
+1. **0–4 s — Fragmentação:** blocos de conteúdo, navegação e contato aparecem separados em fundo azul-marinho.
+2. **4–9 s — Direção:** uma linha diagonal percorre a cena, alinha os elementos e reduz o ruído.
+3. **9–17 s — Sistema:** desktop, tablet e celular mostram a mesma interface se reorganizando, sem trocar de página.
+4. **17–23 s — Jornada:** mensagem, prova, ação e WhatsApp se conectam em sequência.
+5. **23–30 s — Fechamento:** “Estrutura digital para transformar atenção em uma conversa clara” e CTA discreto.
 
-- 0–4s: recorte visual da logomarca e transição diagonal.
-- 4–9s: mostrar navegação real da experiência.
-- 9–14s: demonstrar a passagem da página para o aplicativo e o WhatsApp.
-- 14–20s: logo, URL oficial quando configurada e CTA “Conheça a Carthage”.
+## Padrão visual esperado
 
-## Condição especial de portfólio — 20 segundos
+- 4K master, versões WebM e MP4, 24 ou 30 fps;
+- sem áudio obrigatório, legendas incorporadas apenas quando indispensáveis;
+- câmera virtual lenta, transições físicas coerentes e movimento contínuo;
+- fundo escuro, contraste alto, tipografia nítida e gradiente usado como orientação;
+- sem mockups de lojas, avaliações, números ou clientes inexistentes;
+- primeiro quadro útil em menos de 500 ms e pôster próprio sem ícone de play desenhado.
 
-- 0–4s: problema de presença digital desorganizada.
-- 4–9s: mostrar estrutura, mobile e páginas.
-- 9–15s: “3 projetos selecionados com condição especial de R$ 300.”
-- 15–20s: explicar que o escopo é definido em diagnóstico e exibir CTA.
+## Entregáveis da produtora
 
-## Portfólio — 30 segundos
+- master 3840×2160;
+- versão horizontal 1920×1080 com até 3 MB;
+- versão vertical 1080×1920 com até 2,5 MB;
+- pôsteres AVIF/WebP sem texto pequeno;
+- autorização de fontes, trilhas, modelos 3D e demais ativos.
 
-- apresentar somente projetos reais, internos ou conceituais devidamente identificados;
-- não exibir resultados não medidos;
-- não incluir mensagens, acessos ou preços privados;
-- finalizar com processo e contato.
+Somente após os arquivos finais existirem o vídeo deve ser integrado com `autoplay muted loop playsinline`, respeitando economia de dados e preferência por movimento reduzido.
