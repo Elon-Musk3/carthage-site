@@ -12,7 +12,12 @@
     '.project-feature__copy',
     '.footer-cta__content',
     '.campaign-content',
-    '.compatibility-card'
+    '.compatibility-card',
+    '.experience-hero__copy',
+    '.experience-story__copy',
+    '.experience-audit > div',
+    '.hero-case-proof__body',
+    '.legal-hero > .container'
   ].join(',');
 
   const cardSelector = [
@@ -25,7 +30,13 @@
     '.faq-item',
     '.service-preview',
     '.principle-system article',
-    '.legal-icon-cluster a'
+    '.legal-icon-cluster a',
+    '.capability-card',
+    '.commercial-card',
+    '.experience-detail-grid article',
+    '.experience-next-grid a',
+    '.mobile-flow article',
+    '.legal-toc'
   ].join(',');
 
   const mediaSelector = [
@@ -45,7 +56,11 @@
     '.ecosystem-map',
     '.ecosystem-flow',
     '.funnel-visual',
-    '.process-timeline'
+    '.process-timeline',
+    '.experience-device',
+    '.experience-map',
+    '.orientation-lab',
+    '.thumb-map'
   ].join(',');
 
   const revealGroupSelector = [
@@ -58,7 +73,13 @@
     '.project-feature',
     '.icon-list',
     '.related-grid',
-    '.contact-channels'
+    '.contact-channels',
+    '.capability-grid',
+    '.commercial-grid',
+    '.experience-detail-grid',
+    '.experience-next-grid',
+    '.mobile-flow',
+    '.legal-content'
   ].join(',');
 
   const copyChildSelector = [
@@ -85,8 +106,27 @@
     const cardElements = [...document.querySelectorAll(cardSelector)];
     const mediaElements = getOutermost([...document.querySelectorAll(mediaSelector)]);
 
+    /*
+     * Documentos longos e blocos estruturais sem marcação manual também entram
+     * no sistema. Primeiro registramos as seções internas; depois só marcamos
+     * contêineres diretos que ainda não possuem revelações descendentes.
+     */
+    document.querySelectorAll('main .legal-section').forEach((element) => {
+      if (!element.closest('[data-reveal]')) element.setAttribute('data-reveal', '');
+    });
+
     [...copyElements, ...cardElements, ...mediaElements].forEach((element) => {
       if (!element.hasAttribute('data-reveal') && !element.closest('[data-reveal]')) {
+        element.setAttribute('data-reveal', '');
+      }
+    });
+
+    document.querySelectorAll('main > section > .container > *').forEach((element) => {
+      if (
+        !element.hasAttribute('data-reveal')
+        && !element.closest('[data-reveal]')
+        && !element.querySelector('[data-reveal]')
+      ) {
         element.setAttribute('data-reveal', '');
       }
     });
@@ -146,6 +186,13 @@
     document.querySelectorAll('.hero, main .section').forEach((section) => {
       section.dataset.motionSection = '';
     });
+
+    /*
+     * A classe só é aplicada depois que todo o modelo de movimento existe.
+     * Isso evita esconder conteúdo quando o JavaScript não carrega e garante
+     * que o navegador consiga pintar um estado inicial antes da entrada.
+     */
+    document.documentElement.classList.add('motion-ready');
   };
 
   const initRevealAnimations = () => {
@@ -157,25 +204,74 @@
       return;
     }
 
+    const pending = new Set(elements);
+    let fallbackFrame = 0;
+
+    const reveal = (element) => {
+      if (!pending.has(element)) return;
+      pending.delete(element);
+      element.dataset.motionState = 'visible';
+      element.classList.add('is-visible');
+      observer.unobserve(element);
+    };
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
+        reveal(entry.target);
       });
     }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -7% 0px'
+      threshold: 0.025,
+      rootMargin: '0px 0px -12% 0px'
     });
 
-    elements.forEach((element) => {
-      const rect = element.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.94 && rect.bottom > 0) {
-        element.classList.add('is-visible');
-      } else {
+    const revealVisible = () => {
+      fallbackFrame = 0;
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+      pending.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+
+        /*
+         * Elementos acima do ponto restaurado pelo navegador não devem ficar
+         * invisíveis. Os demais entram quando cruzam 86% da janela.
+         */
+        if (rect.bottom <= 0 || (rect.top <= viewportHeight * 0.86 && rect.bottom >= viewportHeight * 0.06)) {
+          reveal(element);
+        }
+      });
+    };
+
+    const scheduleFallback = () => {
+      if (fallbackFrame || !pending.size) return;
+      fallbackFrame = window.requestAnimationFrame(revealVisible);
+    };
+
+    const start = () => {
+      elements.forEach((element) => {
+        element.dataset.motionState = 'queued';
         observer.observe(element);
-      }
+      });
+      revealVisible();
+      window.addEventListener('scroll', scheduleFallback, { passive: true });
+      window.addEventListener('resize', scheduleFallback, { passive: true });
+      window.addEventListener('pageshow', scheduleFallback);
+    };
+
+    /*
+     * Dois quadros garantem que opacity/transform iniciais sejam pintados.
+     * Sem essa separação, páginas muito rápidas podiam receber is-visible no
+     * mesmo frame e aparentar não possuir animação.
+     */
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(start);
     });
+
+    const handleMotionPreference = () => {
+      if (!motionQuery.matches) return;
+      pending.forEach(reveal);
+    };
+    motionQuery.addEventListener?.('change', handleMotionPreference);
   };
 
   const initScrollMotion = () => {
@@ -344,24 +440,42 @@
     if (!videos.length) return;
 
     const mobileQuery = window.matchMedia('(max-width: 700px)');
-    const saveData = Boolean(navigator.connection?.saveData);
-
     videos.forEach((video) => {
       let profile = '';
-      let inViewport = false;
+      const initialRect = video.getBoundingClientRect();
+      let inViewport = initialRect.bottom > 0 && initialRect.top < window.innerHeight;
 
       video.muted = true;
       video.defaultMuted = true;
       video.controls = false;
+      video.loop = true;
+      video.playsInline = true;
+      video.disablePictureInPicture = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('playsinline', '');
+      video.setAttribute('disablepictureinpicture', '');
+      video.setAttribute('disableremoteplayback', '');
+      video.setAttribute('controlslist', 'nodownload nofullscreen noremoteplayback');
+      video.tabIndex = -1;
 
-      const mayAutoplay = () => !motionQuery.matches && !saveData;
+      /*
+       * O vídeo é uma demonstração funcional, silenciosa e sem controles.
+       * "Movimento reduzido" continua desativando parallax e entradas
+       * decorativas, mas não troca esta prova real por uma imagem estática.
+       * Os arquivos são locais, comprimidos e existem em versões próprias para
+       * desktop e mobile; portanto a reprodução não é condicionada a APIs
+       * opcionais do navegador, como Network Information/saveData.
+       */
+      const mayAutoplay = () => true;
 
       const playVideo = async () => {
         if (!mayAutoplay() || !inViewport || document.hidden) return;
         try {
           await video.play();
+          video.dataset.playing = 'true';
         } catch (_) {
           // O pôster permanece visível quando o navegador recusa a reprodução.
+          delete video.dataset.playing;
         }
       };
 
@@ -373,7 +487,7 @@
         video.replaceChildren();
         video.poster = video.dataset[`${profile}Poster`];
         video.autoplay = mayAutoplay();
-        video.preload = mayAutoplay() ? 'metadata' : 'none';
+        video.preload = mayAutoplay() ? 'auto' : 'none';
 
         [
           [video.dataset[`${profile}Webm`], 'video/webm'],
@@ -386,14 +500,21 @@
           video.append(source);
         });
         video.load();
-        playVideo();
+        if (video.readyState >= 2) playVideo();
+        else {
+          video.addEventListener('loadeddata', playVideo, { once: true });
+          video.addEventListener('canplay', playVideo, { once: true });
+        }
       };
 
       if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver(([entry]) => {
           inViewport = entry.isIntersecting;
           if (inViewport) playVideo();
-          else video.pause();
+          else {
+            video.pause();
+            delete video.dataset.playing;
+          }
         }, { threshold: 0.2 });
         observer.observe(video);
       } else {
@@ -403,8 +524,7 @@
       const handleProfileChange = () => setProfile();
       const handleMotionChange = () => {
         video.autoplay = mayAutoplay();
-        if (motionQuery.matches) video.pause();
-        else playVideo();
+        playVideo();
       };
       if (mobileQuery.addEventListener) mobileQuery.addEventListener('change', handleProfileChange);
       else mobileQuery.addListener?.(handleProfileChange);
@@ -414,6 +534,15 @@
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) video.pause();
         else playVideo();
+      });
+      window.addEventListener('pageshow', playVideo);
+      /*
+       * Alguns navegadores restauram a página sem repetir a política de
+       * autoplay. A primeira interação serve apenas como uma tentativa
+       * silenciosa de recuperação; nenhum controle visual é criado.
+       */
+      ['pointerdown', 'touchstart', 'keydown'].forEach((eventName) => {
+        document.addEventListener(eventName, playVideo, { once: true, passive: true });
       });
 
       setProfile();

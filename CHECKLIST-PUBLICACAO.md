@@ -3,10 +3,12 @@
 - [ ] Criar cópia recuperável da versão publicada atualmente.
 - [ ] Confirmar titularidade do domínio, DNS, hospedagem e repositório.
 - [ ] Substituir os arquivos preservando a estrutura de pastas.
-- [ ] Testar as 19 rotas, a página 404, links internos e âncoras.
+- [ ] Testar as 20 rotas públicas do sitemap, a rota de compatibilidade do aplicativo, a página 404, links internos e âncoras.
 - [ ] Testar menu, FAQs, formulários, WhatsApp e retorno de foco por teclado.
 - [ ] Percorrer rapidamente Soluções → Projetos → Carthage no desktop e confirmar que somente a primeira categoria distribui itens; as seguintes devem substituir o conteúdo sem novo escalonamento.
 - [ ] Conferir revelações de textos, cartões e mídias ao descer e subir a página, sem saltos de layout.
+- [ ] Abrir `responsividade-desktop.html`, `responsividade-tablet.html` e `responsividade-celular.html` pelos três cartões da homepage e conferir links cruzados, imagens, diagramas e CTA final.
+- [ ] Confirmar que a tabela comercial publicada continua válida: R$ 925–1.499 para site de referência, R$ 10/R$ 20/R$ 50 para alterações avulsas e R$ 40–50/mês para recorrência.
 - [ ] Conferir desktop, tablet e celular sem rolagem horizontal.
 - [ ] Validar título, descrição, canonical, Open Graph, sitemap e robots.
 - [ ] Confirmar que GA4 e Meta Pixel só carregam após consentimento aplicável.
@@ -14,7 +16,14 @@
 - [x] Obter autorização do cliente para as telas e gravações do portfólio.
 - [ ] Conferir o loop em Chrome, Edge, Safari e Firefox, em desktop e celular reais.
 - [ ] Confirmar que o vídeo mobile é selecionado abaixo de 700 px e o desktop acima desse ponto.
-- [ ] Testar o loop automático, economia de dados e a preferência de movimento reduzido.
+- [ ] Testar o loop automático com a página recém-aberta, após voltar de outra aba, após navegação pelo histórico e em conexão móvel real.
+- [ ] Abrir os seletores dos dois formulários por mouse, toque e teclado; testar também prazo digitado livremente, sugestões rápidas e confirmação de privacidade.
+- [ ] No desktop, passar o cursor por todos os seletores e confirmar que apenas um permanece aberto e que a lista fecha ao retirar o mouse.
+- [ ] Trocar a demonstração entre Desktop, Tablet e Celular e confirmar que imagem, moldura, estado e descrição mudam juntos.
+- [ ] Arrastar o comparador por mouse e toque e operá-lo pelas setas do teclado.
+- [ ] Levar o comparador até 0% e 100%, soltar o ponteiro e confirmar que ele permanece no limite sem selecionar a imagem.
 - [ ] Com movimento reduzido ativado, confirmar que nenhum texto fica transparente, borrado ou deslocado e que profundidade e magnetismo são desativados.
 - [ ] Manter `aplicativo.html` fora da navegação e do sitemap enquanto não existir produto real.
+- [ ] Abrir a Central de escolhas e testar tema, contraste, texto ampliado, densidade compacta, redução de movimento e autoplay desligado; atualizar a página e conferir a persistência.
+- [ ] Confirmar o endereço público definitivo da página do Facebook antes do lançamento.
 - [ ] Revisar políticas com profissional jurídico responsável.

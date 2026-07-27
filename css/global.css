@@ -101,6 +101,51 @@ small { font-size: 0.82rem; }
 .section--gradient { background: linear-gradient(145deg, var(--navy-900), var(--navy-850)); }
 .section--cut { clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%); padding-block: clamp(110px, 12vw, 170px); }
 
+/* Preferências de interface aplicadas imediatamente pela central de escolhas. */
+html[data-interface-text="large"] { font-size: 112.5%; }
+html[data-interface-density="compact"] .section { padding-block: clamp(52px, 7vw, 96px); }
+html[data-interface-density="compact"] .section--compact { padding-block: clamp(38px, 5vw, 66px); }
+html[data-interface-contrast="high"] {
+  --muted: #c8d9e3;
+  --silver: #edf6fa;
+  --line-dark: rgba(213, 233, 243, .3);
+}
+html[data-interface-contrast="high"] :focus-visible { outline-width: 3px; outline-color: #fff; }
+html[data-interface-theme="dark"] {
+  --navy-950: #000712;
+  --navy-925: #020d1d;
+  --navy-900: #04152a;
+  --navy-850: #082443;
+}
+html[data-interface-theme="light"] body {
+  color: #102536;
+  background: #edf7fa;
+}
+html[data-interface-theme="light"] .section--deep,
+html[data-interface-theme="light"] .section--gradient,
+html[data-interface-theme="light"] .hero,
+html[data-interface-theme="light"] .site-footer {
+  color: #edf7fa;
+}
+html[data-interface-theme="light"] .site-header {
+  box-shadow: 0 12px 42px rgba(5,31,54,.14);
+}
+html[data-interface-motion="reduced"] *,
+html[data-interface-motion="reduced"] *::before,
+html[data-interface-motion="reduced"] *::after {
+  scroll-behavior: auto !important;
+  animation-duration: .01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: .01ms !important;
+}
+html[data-interface-motion="reduced"] [data-reveal],
+html[data-interface-motion="reduced"] [data-motion],
+html[data-interface-motion="reduced"] [data-motion-child] {
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+}
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -198,45 +243,45 @@ small { font-size: 0.82rem; }
   transform-origin: left;
 }
 
-.js [data-reveal] {
+.js.motion-ready [data-reveal] {
   opacity: 0;
-  filter: blur(3px);
-  transform: translate3d(0, 24px, 0);
+  filter: blur(7px);
+  transform: translate3d(0, 38px, 0);
   transition:
     opacity var(--motion-duration) ease var(--motion-delay, 0ms),
     filter var(--motion-duration) ease var(--motion-delay, 0ms),
     transform var(--motion-duration) var(--motion-ease-out) var(--motion-delay, 0ms);
 }
-.js [data-reveal][data-motion="card"] {
-  transform: translate3d(0, 22px, 0) scale(.985);
+.js.motion-ready [data-reveal][data-motion="card"] {
+  transform: translate3d(0, 44px, 0) scale(.974);
 }
-.js [data-reveal][data-motion="media"] {
-  filter: blur(7px);
-  transform: translate3d(0, 26px, 0) scale(.968);
+.js.motion-ready [data-reveal][data-motion="media"] {
+  filter: blur(11px);
+  transform: translate3d(0, 48px, 0) scale(.948);
 }
-.js [data-reveal][data-motion="copy"] {
+.js.motion-ready [data-reveal][data-motion="copy"] {
   opacity: 1;
   filter: none;
   transform: none;
   transition: none;
 }
-.js [data-reveal][data-motion="copy"] [data-motion-child] {
+.js.motion-ready [data-reveal][data-motion="copy"] [data-motion-child] {
   opacity: 0;
-  filter: blur(3px);
-  transform: translate3d(0, 22px, 0);
+  filter: blur(6px);
+  transform: translate3d(0, 34px, 0);
   transition:
     opacity 680ms ease calc(var(--motion-delay, 0ms) + var(--motion-child-delay, 0ms)),
     filter 680ms ease calc(var(--motion-delay, 0ms) + var(--motion-child-delay, 0ms)),
     transform 760ms var(--motion-ease-out) calc(var(--motion-delay, 0ms) + var(--motion-child-delay, 0ms));
 }
-.js [data-reveal].is-visible,
-.js [data-reveal][data-motion="card"].is-visible,
-.js [data-reveal][data-motion="media"].is-visible {
+.js.motion-ready [data-reveal].is-visible,
+.js.motion-ready [data-reveal][data-motion="card"].is-visible,
+.js.motion-ready [data-reveal][data-motion="media"].is-visible {
   opacity: 1;
   filter: none;
   transform: translate3d(0, 0, 0) scale(1);
 }
-.js [data-reveal][data-motion="copy"].is-visible [data-motion-child] {
+.js.motion-ready [data-reveal][data-motion="copy"].is-visible [data-motion-child] {
   opacity: 1;
   filter: none;
   transform: translate3d(0, 0, 0);

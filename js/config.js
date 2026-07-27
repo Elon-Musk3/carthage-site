@@ -10,12 +10,14 @@
     whatsappNumber: '5562999810066',
     instagramHandle: '@carthage.inc',
     instagramUrl: 'https://www.instagram.com/carthage.inc',
+    facebookLabel: 'Carthage no Facebook',
+    facebookUrl: 'https://www.facebook.com/carthage.inc',
     promotionEnabled: true
   });
 
   window.PROMOTION_CONFIG = Object.freeze({
     enabled: true,
-    originalPrice: 925,
+    originalPrice: '925–1.499',
     promotionalPrice: 300,
     totalSlots: 3,
     remainingSlots: 3,
@@ -36,8 +38,8 @@
   });
 
   window.CARTHAGE_PRIVACY_CONFIG = Object.freeze({
-    version: '2026-07-20',
-    storageKey: 'carthage_privacy_consent_v2',
+    version: '2026-07-27',
+    storageKey: 'carthage_privacy_consent_v3',
     googleAnalyticsId: '', // Ativar somente com um ID GA4 real no formato G-XXXXXXXXXX.
     metaPixelId: '1570216137830619',
     policyUrl: 'politica-de-privacidade.html',

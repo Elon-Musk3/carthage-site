@@ -299,7 +299,7 @@
       Categorias, tecnologias, consentimento e controles disponíveis no ecossistema digital da Carthage.
      </p>
 <p class="muted">
-      Última atualização: 20 de julho de 2026
+      Última atualização: 27 de julho de 2026
      </p>
 </div>
 </section>
@@ -343,6 +343,13 @@
        </h2>
 <p>
         Cookies e tecnologias semelhantes podem registrar escolhas, sessão, eventos e identificadores técnicos. O site utiliza armazenamento local para consentimento e armazenamento de sessão para atribuição de campanhas.
+       </p>
+<p>
+        “Cookie” é usado nesta política como termo funcional para incluir cookies HTTP, localStorage, sessionStorage, pixels, tags e identificadores que possam reconhecer uma sessão, guardar uma decisão ou registrar um evento. Nem toda tecnologia utilizada cria um arquivo de cookie tradicional, mas os mesmos princípios de transparência, necessidade, finalidade e controle são aplicados.
+       </p>
+<h3>O que não é feito por padrão</h3>
+<p>
+        A primeira visita não ativa categorias analíticas ou publicitárias. A navegação principal, a leitura das páginas e o contato por link continuam disponíveis quando o visitante mantém apenas recursos necessários. A Carthage não usa a recusa para ocultar conteúdo, reduzir preço, reiniciar falsos cronômetros ou impedir acesso ao portfólio.
        </p>
 </section>
 <section class="legal-section" id="categorias">
@@ -406,12 +413,16 @@
             Recursos opcionais de interface
            </td>
 <td>
-            Somente com consentimento; sem recurso adicional atual
+            Somente com consentimento; tema, contraste, leitura, densidade, movimento e autoplay
            </td>
 </tr>
 </tbody>
 </table>
 </div>
+<h3>Critério de classificação</h3>
+<p>
+        Uma tecnologia é necessária quando sua ausência inviabiliza segurança, navegação solicitada ou registro da própria escolha. Conveniência, medição de audiência, atribuição publicitária e personalização visual não são classificadas como necessárias apenas por beneficiarem a operação. A classificação é revista quando um fornecedor ou comportamento muda.
+       </p>
 </section>
 <section class="legal-section" id="tecnologias">
 <h2>
@@ -421,7 +432,7 @@
 <strong>
          localStorage:
         </strong>
-        registra versão, data, origem da escolha e categorias.
+        registra versão, data, origem da escolha e categorias; também guarda preferências de interface escolhidas pelo visitante.
        </p>
 <p>
 <strong>
@@ -441,6 +452,22 @@
         </strong>
         não carrega enquanto não houver ID real e consentimento analítico.
        </p>
+<div class="legal-table">
+<table>
+<thead><tr><th>Chave ou tecnologia</th><th>Categoria</th><th>Conteúdo/finalidade</th><th>Duração prevista</th></tr></thead>
+<tbody>
+<tr><td>carthage_privacy_consent_v3</td><td>Necessário</td><td>Versão, data, origem e categorias autorizadas</td><td>Até alteração, limpeza ou nova versão</td></tr>
+<tr><td>carthage_interface_preferences_v1</td><td>Preferências</td><td>Tema, contraste, texto, densidade, movimento e autoplay</td><td>Até restauração ou limpeza local</td></tr>
+<tr><td>UTMs e fbclid em sessionStorage</td><td>Necessário à atribuição solicitada/temporária</td><td>Preservar origem da campanha ao navegar entre páginas</td><td>Somente durante a sessão</td></tr>
+<tr><td>carthage_promo_closed</td><td>Necessário à interface</td><td>Não reapresentar aviso promocional fechado na mesma sessão</td><td>Somente durante a sessão</td></tr>
+<tr><td>Meta Pixel</td><td>Publicitário</td><td>PageView e eventos de campanha autorizados</td><td>Conforme configuração e política da Meta</td></tr>
+<tr><td>Google Analytics</td><td>Analítico</td><td>Métricas agregadas quando existir ID válido</td><td>Conforme configuração e política do Google</td></tr>
+</tbody>
+</table>
+</div>
+<p>
+        A lista é funcional, não uma declaração de que toda tecnologia opcional está ativa. Por exemplo, o código do Analytics permanece inerte se não houver um identificador GA4 válido, mesmo que o visitante autorize a categoria analítica.
+       </p>
 </section>
 <section class="legal-section" id="escolha">
 <h2>
@@ -450,8 +477,16 @@
         Na primeira visita, o visitante pode aceitar, rejeitar opcionais ou personalizar. A ausência de escolha não ativa Analytics nem Meta Pixel.
        </p>
 <div class="legal-callout">
-        Rejeitar tecnologias opcionais não impede o acesso ao conteúdo principal.
+        Rejeitar tecnologias opcionais não impede o acesso ao conteúdo principal. Na central, cada alteração é aplicada imediatamente e pode ser revista pelo rodapé.
        </div>
+<h3>Preferências funcionais de interface</h3>
+<p>
+        A central oferece controles de tema, contraste, tamanho de texto, densidade, redução de movimento e reprodução automática. A mudança é aplicada no momento do clique. Ao escolher uma personalização, a categoria de preferências é ativada para permitir que a decisão seja lembrada; o visitante pode desativá-la ou restaurar os padrões a qualquer momento.
+       </p>
+<h3>Consentimento granular</h3>
+<p>
+        Autorizar “Analíticos” não autoriza “Publicitários”, e o inverso também é verdadeiro. “Aceitar opcionais” ativa as três categorias opcionais de uma vez; “Somente necessários” as mantém desligadas; “Configurar escolhas” permite decisões separadas. O estado visual dos interruptores corresponde ao estado registrado localmente.
+       </p>
 </section>
 <section class="legal-section" id="gerenciar">
 <h2>
@@ -461,8 +496,11 @@
         A escolha pode ser alterada pelo botão abaixo. Uma nova decisão substitui a anterior para carregamentos futuros.
        </p>
 <button class="btn btn--secondary" data-open-privacy-settings="" type="button">
-        Abrir preferências
+        Configurar privacidade e interface
        </button>
+<p>
+        A revogação desabilita novos eventos da categoria correspondente. Scripts que já tenham sido carregados podem não ser removidos fisicamente da memória da página, mas recebem o comando de desativação ou revogação disponível e deixam de ser autorizados em navegações futuras. Para uma remoção completa da sessão atual, o visitante pode recarregar a página após alterar a escolha.
+       </p>
 </section>
 <section class="legal-section" id="duracao">
 <h2>
@@ -471,6 +509,9 @@
 <p>
         A decisão permanece até limpeza dos dados, alteração manual ou mudança de versão do mecanismo de consentimento. Tecnologias de fornecedores podem possuir durações próprias após autorização.
        </p>
+<p>
+        O armazenamento de sessão normalmente é descartado quando a sessão do navegador termina, sujeito ao comportamento do navegador. O armazenamento local não possui expiração automática obrigatória; por isso a Carthage usa versionamento e oferece controles para substituição e restauração. Prazos de cookies de terceiros são definidos e podem ser modificados pelos próprios fornecedores.
+       </p>
 </section>
 <section class="legal-section" id="navegador">
 <h2>
@@ -478,6 +519,16 @@
        </h2>
 <p>
         O visitante também pode apagar ou bloquear dados nas configurações do navegador. O bloqueio de recursos necessários pode afetar funções específicas.
+       </p>
+<ul>
+<li>apagar dados somente deste domínio ou de todos os sites;</li>
+<li>bloquear cookies de terceiros ou todos os cookies;</li>
+<li>usar navegação privada, observando que ela não equivale a anonimato total;</li>
+<li>revisar permissões, extensões e proteções contra rastreamento;</li>
+<li>usar a central do próprio site para uma escolha mais específica.</li>
+</ul>
+<p>
+        Sinais automáticos do navegador, como “Do Not Track” ou controles globais de privacidade, podem não ser interpretados de forma uniforme por todos os fornecedores. A Carthage prioriza a escolha explícita na central e continuará avaliando padrões tecnicamente reconhecidos.
        </p>
 </section>
 <section class="legal-section" id="contato">
@@ -494,6 +545,15 @@
          (62) 99981-0066
         </a>
         .
+       </p>
+<p>
+        Ao entrar em contato, informe o navegador, a página e a categoria envolvida, sem enviar senhas ou dados desnecessários. A Carthage pode solicitar uma captura de tela sem informações sensíveis para reproduzir falhas de preferência.
+       </p>
+<h3>Referência oficial</h3>
+<p>
+        A estrutura desta política considera as orientações da
+        <a href="https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia-orientativo-cookies-e-protecao-de-dados-pessoais.pdf" rel="noopener" target="_blank">ANPD sobre cookies e proteção de dados pessoais</a>,
+        especialmente transparência, opção real, granularidade e minimização.
        </p>
 </section>
 </div>

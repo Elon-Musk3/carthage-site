@@ -7,7 +7,7 @@ O site está funcional sem estes itens. Eles só devem entrar quando forem reais
 - autorização do cliente para uso público das telas do projeto;
 - gravações reais em desktop e mobile;
 - loop institucional silencioso em MP4 e WebM, com pôsteres responsivos;
-- integração automática sem controles visuais, com economia de dados e preferência de movimento reduzido.
+- integração automática sem controles visuais, com fontes próprias para desktop e mobile e redução das animações decorativas quando o sistema solicita menos movimento.
 
 ## Ainda pendente
 
@@ -16,5 +16,6 @@ O site está funcional sem estes itens. Eles só devem entrar quando forem reais
 3. **Métricas verificáveis:** publicar somente após período de medição definido e com fonte identificada.
 4. **Identidade vetorial completa:** versões oficiais do símbolo e assinatura em SVG, monocromia, fundos e regras mínimas de uso.
 5. **Configurações de produção:** validar GA4, Meta Pixel, domínio, DNS, hospedagem e política jurídica antes de ativar.
+6. **Endereço oficial do Facebook:** o rodapé está preparado para `https://www.facebook.com/carthage.inc`, seguindo o identificador público usado no Instagram, mas a página não apareceu nos resultados públicos consultados. Confirmar o endereço exato antes da publicação.
 
 Não é necessário criar projetos fictícios para ocupar espaço. O portfólio deve crescer apenas com trabalhos reais.

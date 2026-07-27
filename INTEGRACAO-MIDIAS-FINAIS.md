@@ -13,8 +13,10 @@
 - Contato: mídia de diagnóstico e ícones para o que existe, o que precisa mudar e o que ainda não foi definido.
 - Central de privacidade e páginas legais: ícones SVG específicos.
 - Promoção: mídia da condição especial e seis ícones específicos de escopo.
+- Homepage e estudo de caso: loops silenciosos autorizados em WebM e MP4, com versões horizontal e vertical, pôsteres e troca automática conforme a largura da tela.
+- Experiências responsivas: capturas independentes do projeto publicado em viewport real de tablet (768 × 1024 px) e celular (390 × 844 px @2x), sem recortar a composição desktop.
 
 ## Mantido sem inventar
 
-- Vídeo oficial e trilha: continuam pendentes porque nenhum arquivo de vídeo autorizado foi fornecido.
+- Trilha sonora: não foi incorporada porque o vídeo deve permanecer silencioso em autoplay. O material autorizado de navegação já foi integrado como loop institucional.
 - URL oficial do aplicativo: continua usando o fallback transparente para WhatsApp.

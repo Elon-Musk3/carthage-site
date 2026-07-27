@@ -314,7 +314,12 @@
        </li>
 </ul>
 </div>
-<div class="hero-stage diagnostic-stage" aria-label="Etapas do diagnóstico"><div class="diagnostic-node"><span>01</span><strong>Situação</strong></div><div class="diagnostic-node"><span>02</span><strong>Objetivo</strong></div><div class="diagnostic-node"><span>03</span><strong>Escopo</strong></div><div class="diagnostic-node diagnostic-node--accent"><span>04</span><strong>Próximo passo</strong></div></div>
+<div class="hero-stage diagnostic-stage" aria-label="Etapas do diagnóstico">
+<article class="diagnostic-node"><span>01</span><svg aria-hidden="true" viewBox="0 0 48 48"><circle cx="24" cy="24" r="15"></circle><path d="M24 16v9l6 4"></path></svg><strong>Situação</strong><p>O que existe hoje e qual problema precisa ser resolvido.</p></article>
+<article class="diagnostic-node"><span>02</span><svg aria-hidden="true" viewBox="0 0 48 48"><circle cx="24" cy="24" r="15"></circle><circle cx="24" cy="24" r="7"></circle><path d="m33 15 6-6m-6 0h6v6"></path></svg><strong>Objetivo</strong><p>O resultado esperado e a ação que o visitante deve realizar.</p></article>
+<article class="diagnostic-node"><span>03</span><svg aria-hidden="true" viewBox="0 0 48 48"><rect x="10" y="12" width="28" height="24" rx="5"></rect><path d="M17 20h14M17 27h9"></path></svg><strong>Escopo</strong><p>Páginas, conteúdo, recursos, integrações e nível de autonomia.</p></article>
+<article class="diagnostic-node diagnostic-node--accent"><span>04</span><svg aria-hidden="true" viewBox="0 0 48 48"><path d="M10 24h24m-8-8 8 8-8 8"></path><circle cx="24" cy="24" r="17"></circle></svg><strong>Próximo passo</strong><p>Uma recomendação objetiva para avançar sem adivinhar o projeto.</p></article>
+</div>
 </div>
 </section>
 <section class="section section--deep" id="diagnostico">
@@ -463,20 +468,18 @@
 <label for="deadline">
           Prazo aproximado
          </label>
-<select id="deadline" name="deadline">
-<option value="">
-           Sem prazo definido
-          </option>
-<option>
-           Até 30 dias
-          </option>
-<option>
-           Entre 30 e 60 dias
-          </option>
-<option>
-           Mais de 60 dias
-          </option>
-</select>
+<div class="deadline-field" data-deadline-field="">
+<input autocomplete="off" data-deadline-input="" id="deadline" name="deadline" placeholder="Digite um prazo ou escolha uma referência" value="Sem prazo definido"/>
+<span class="deadline-field__label">Referências rápidas — você pode editar livremente</span>
+<div aria-label="Sugestões de prazo" class="deadline-suggestions">
+<button aria-pressed="true" data-deadline-value="Sem prazo definido" type="button">Sem prazo definido</button>
+<button aria-pressed="false" data-deadline-value="1–2 dias" type="button">1–2 dias</button>
+<button aria-pressed="false" data-deadline-value="7 dias" type="button">7 dias</button>
+<button aria-pressed="false" data-deadline-value="30 dias" type="button">30 dias</button>
+<button aria-pressed="false" data-deadline-value="60 dias" type="button">60 dias</button>
+<button aria-pressed="false" data-deadline-value="Mais de 60 dias" type="button">Mais de 60 dias</button>
+</div>
+</div>
 <span class="field-error">
 </span>
 </div>

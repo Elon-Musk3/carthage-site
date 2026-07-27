@@ -16,18 +16,27 @@ Use uma janela anônima ou execute `CARTHAGE_PRIVACY.reset()` no console.
 - redefinir e testar **Aceitar opcionais**;
 - atualizar a página e confirmar que o cartão não reaparece após uma escolha salva.
 
-## Painel detalhado
+## Central detalhada
 
-- redefinir e clicar em **Configurar**;
-- confirmar que o painel abre somente após o clique;
+- redefinir e clicar em **Configurar escolhas** ou **Preferências** no rodapé;
+- confirmar que a central abre somente após o clique;
 - testar o `×`, o clique no fundo e a tecla `Escape`;
-- ativar e desativar cada chave;
-- clicar em **Salvar seleção**;
-- confirmar que o painel fecha e a escolha fica preservada.
+- alternar entre **Privacidade**, **Aparência**, **Leitura** e **Mídia**;
+- ativar e desativar cada categoria opcional e confirmar que a escolha é aplicada imediatamente;
+- testar tema original, escuro e claro;
+- testar densidade confortável e compacta;
+- testar texto padrão e ampliado;
+- testar contraste padrão e alto;
+- testar animações completas e reduzidas;
+- testar reprodução automática ativada e desativada;
+- fechar com **Concluir**, atualizar a página e confirmar que escolhas autorizadas foram preservadas;
+- testar **Restaurar interface** e confirmar o retorno aos padrões visuais.
 
 ## Rastreamento
 
 - ao rejeitar, confirmar que Pixel e Analytics continuam desligados;
 - ao aceitar opcionais, confirmar carregamento do Meta Pixel `1570216137830619`;
 - confirmar que o Google Analytics não carrega sem um ID real;
-- confirmar que as preferências podem ser alteradas novamente pelo rodapé.
+- confirmar que as preferências podem ser alteradas novamente pelo rodapé;
+- confirmar que desligar autoplay pausa os vídeos e preserva os pôsteres;
+- confirmar que movimento reduzido mantém todo o conteúdo visível.

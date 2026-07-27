@@ -319,7 +319,7 @@
        </li>
 </ul>
 </div>
-<div class="hero-stage hero-stage--media" data-hero-stage=""><figure class="service-visual service-visual--hero"><img alt="Demonstração conceitual de uma estrutura fragmentada sendo reformulada" decoding="async" fetchpriority="high" height="900" src="assets/images/visual-reformulacao.webp" width="1200"/><figcaption class="sr-only">Comparação conceitual entre estrutura antiga e estrutura organizada.</figcaption></figure></div>
+<div class="hero-stage hero-stage--media" data-hero-stage=""><figure class="service-visual service-visual--hero"><img alt="Módulos fragmentados sendo analisados e reorganizados em uma experiência responsiva" decoding="async" fetchpriority="high" height="900" src="assets/images/visual-reformulacao.webp" width="1200"/><figcaption class="sr-only">A análise preserva o que funciona e reconstrói o que limita a experiência.</figcaption></figure><div class="visual-legend" aria-label="Etapas de uma reformulação responsável"><span><b>01</b> Auditar</span><span><b>02</b> Preservar</span><span><b>03</b> Reorganizar</span><span><b>04</b> Reconstruir</span></div></div>
 </div>
 </section>
 <section class="section section--white" id="conteudo">
@@ -388,24 +388,60 @@
 <div class="container">
 <div class="section-heading" data-reveal="">
 <p class="eyebrow">
-       Demonstração conceitual
+       Estrutura real do caso publicado
       </p>
 <h2>
-       Arraste para comparar organização antiga e direção reformulada.
+       Do mapa de conteúdo à interface entregue.
       </h2>
 <p>
-       Este exemplo é visual e não representa resultado de cliente.
+       À esquerda, a estrutura prototipal usada para organizar navegação, conteúdo e ações antes do acabamento visual. À direita, a interface real publicada para Dárcio Eloi Advocacia.
       </p>
 </div>
 <div class="before-after-wrap" data-reveal="">
-<div aria-label="Comparação conceitual entre uma estrutura antiga e uma estrutura reformulada" class="before-after-interactive" data-before-after="" role="group">
+<div aria-label="Comparação entre o mapa estrutural e a interface publicada do projeto Dárcio Eloi" class="before-after-interactive" data-before-after="" role="group">
 <div class="before-after__media before-after__media--before">
-<img alt="Estrutura conceitual antiga, fragmentada e desorganizada" decoding="async" height="900" loading="lazy" src="assets/images/comparador-antes.webp" width="1200"/>
-<span class="before-after__label">Antes</span>
+<div class="prototype-workspace" aria-label="Protótipo estrutural anterior ao design visual">
+<header class="prototype-workspace__toolbar">
+<span class="prototype-workspace__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+<strong>darcio-eloi / arquitetura-v03</strong>
+<span>Fluxo aprovado</span>
+</header>
+<div class="prototype-workspace__body">
+<aside class="prototype-workspace__sidebar">
+<small>Páginas</small>
+<b>01 · Início</b>
+<span>02 · Atuação</span>
+<span>03 · Atendimento</span>
+<span>04 · Regiões</span>
+<span>05 · Sede</span>
+<span>06 · Dúvidas</span>
+<small>Componentes</small>
+<span>Topbar</span><span>Header</span><span>CTA WhatsApp</span>
+</aside>
+<div class="prototype-workspace__canvas">
+<section class="prototype-screen prototype-screen--desktop">
+<div class="prototype-screen__nav"><i></i><i></i><i></i><i></i><i></i></div>
+<div class="prototype-screen__hero">
+<div><b></b><strong></strong><strong></strong><strong></strong><span></span><span></span><i class="prototype-action"></i></div>
+<figure></figure>
+</div>
+<div class="prototype-screen__cards"><i></i><i></i><i></i></div>
+</section>
+<section class="prototype-screen prototype-screen--mobile">
+<div class="prototype-screen__nav"><i></i><i></i></div>
+<div class="prototype-screen__hero"><div><b></b><strong></strong><strong></strong><span></span><i class="prototype-action"></i></div></div>
+</section>
+<span class="prototype-note prototype-note--hierarchy">Hierarquia da mensagem</span>
+<span class="prototype-note prototype-note--contact">Contato sempre alcançável</span>
+<span class="prototype-note prototype-note--mobile">Reorganização mobile</span>
+</div>
+</div>
+</div>
+<span class="before-after__label">Protótipo estrutural · antes</span>
 </div>
 <div class="before-after__media before-after__media--after" data-before-after-after="">
-<img alt="Estrutura conceitual reformulada, clara e responsiva" decoding="async" height="900" loading="lazy" src="assets/images/comparador-depois.webp" width="1200"/>
-<span class="before-after__label">Depois</span>
+<img alt="Homepage publicada do projeto Dárcio Eloi Advocacia em desktop" decoding="async" height="1080" loading="lazy" src="assets/images/hero-poster-desktop.webp" width="1920"/>
+<span class="before-after__label">Interface real publicada · depois</span>
 </div>
 <div aria-hidden="true" class="before-after__divider" data-before-after-handle="">
 <svg aria-hidden="true" focusable="false" viewbox="0 0 48 48">
@@ -413,19 +449,19 @@
 </svg>
 </div>
 </div>
-<label class="sr-only" for="before-after-range">Posição da comparação entre Antes e Depois</label>
-<input aria-label="Posição da comparação entre Antes e Depois" aria-valuetext="50% da imagem Depois visível" data-before-after-range="" id="before-after-range" max="100" min="0" step="1" type="range" value="50"/>
+<label class="sr-only" for="before-after-range">Posição da comparação entre protótipo estrutural e interface publicada</label>
+<input aria-valuetext="28% do protótipo visível e 72% da interface publicada visível" data-before-after-range="" id="before-after-range" max="100" min="0" step="1" type="range" value="28"/>
 <div aria-label="Comparação estática disponível quando o JavaScript está desativado" class="before-after__fallback">
 <figure>
-<img alt="Estrutura conceitual antiga, fragmentada e desorganizada" height="900" loading="lazy" src="assets/images/comparador-antes.webp" width="1200"/>
-<figcaption>Antes</figcaption>
+<img alt="Mapa de conteúdo e wireframes definidos antes da etapa visual" height="900" loading="lazy" src="assets/images/comparador-mapa-estrutura.webp" width="1600"/>
+<figcaption>Antes · estrutura prototipal</figcaption>
 </figure>
 <figure>
-<img alt="Estrutura conceitual reformulada, clara e responsiva" height="900" loading="lazy" src="assets/images/comparador-depois.webp" width="1200"/>
-<figcaption>Depois</figcaption>
+<img alt="Homepage publicada do projeto Dárcio Eloi Advocacia" height="1080" loading="lazy" src="assets/images/hero-poster-desktop.webp" width="1920"/>
+<figcaption>Depois · interface publicada</figcaption>
 </figure>
 </div>
-<span class="concept-label">Demonstração conceitual, sem métricas ou resultados fictícios.</span>
+<span class="concept-label">Comparação de processo: protótipo de arquitetura e interface final publicada. Arraste a divisória; ela permanece exatamente na posição escolhida.</span>
 </div>
 </div>
 </section>

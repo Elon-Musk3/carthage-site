@@ -182,20 +182,18 @@
           <label for="deadline">
            Prazo aproximado
           </label>
-          <select id="deadline" name="deadline">
-           <option value="">
-            Sem prazo definido
-           </option>
-           <option>
-            Até 30 dias
-           </option>
-           <option>
-            Entre 30 e 60 dias
-           </option>
-           <option>
-            Mais de 60 dias
-           </option>
-          </select>
+          <div class="deadline-field" data-deadline-field="">
+           <input autocomplete="off" data-deadline-input="" id="deadline" name="deadline" placeholder="Digite um prazo ou escolha uma referência" value="Sem prazo definido"/>
+           <span class="deadline-field__label">Referências rápidas — você pode editar livremente</span>
+           <div aria-label="Sugestões de prazo" class="deadline-suggestions">
+            <button aria-pressed="true" data-deadline-value="Sem prazo definido" type="button">Sem prazo definido</button>
+            <button aria-pressed="false" data-deadline-value="1–2 dias" type="button">1–2 dias</button>
+            <button aria-pressed="false" data-deadline-value="7 dias" type="button">7 dias</button>
+            <button aria-pressed="false" data-deadline-value="30 dias" type="button">30 dias</button>
+            <button aria-pressed="false" data-deadline-value="60 dias" type="button">60 dias</button>
+            <button aria-pressed="false" data-deadline-value="Mais de 60 dias" type="button">Mais de 60 dias</button>
+           </div>
+          </div>
           <span class="field-error">
           </span>
          </div>

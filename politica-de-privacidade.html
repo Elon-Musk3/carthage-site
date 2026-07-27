@@ -299,7 +299,7 @@
       Como a Carthage trata dados fornecidos em mensagens, formulários, navegação, campanhas, canais de contato e infraestrutura.
      </p>
 <p class="muted">
-      Última atualização: 20 de julho de 2026
+      Última atualização: 27 de julho de 2026
      </p>
 </div>
 </section>
@@ -325,7 +325,9 @@
 <a href="#campanhas">
         5. UTMs, Meta Pixel e Analytics
        </a>
-
+<a href="#transparencia">
+        6. Transparência e decisões
+       </a>
 <a href="#fornecedores">
         7. Compartilhamento e fornecedores
        </a>
@@ -385,6 +387,14 @@
 <p>
         A situação cadastral e o CNPJ devem ser atualizados quando a emissão estiver concluída. Nenhum número provisório é inventado.
        </p>
+<h3>Escopo desta política</h3>
+<p>
+        Este documento abrange a navegação no domínio carthage.com.br, os formulários que preparam mensagens para o WhatsApp, os parâmetros de campanha preservados durante a sessão, a central de preferências, os materiais do portfólio e os contatos comerciais iniciados pelo visitante. Contratos de clientes podem conter regras adicionais sobre acesso a ambientes, arquivos, credenciais e dados tratados exclusivamente durante a execução de um projeto.
+       </p>
+<h3>Papéis e responsabilidades</h3>
+<p>
+        A Carthage atua como controladora dos dados usados para atender contatos, preparar propostas, administrar a relação comercial e operar este site. Em projetos nos quais acessa dados sob instruções de um cliente, poderá atuar como operadora, conforme o escopo e as responsabilidades documentadas na contratação. Fornecedores de hospedagem, comunicação e medição tratam dados conforme seus próprios papéis e contratos.
+       </p>
 </section>
 <section class="legal-section" id="dados">
 <h2>
@@ -398,6 +408,22 @@
        </p>
 <p>
         Durante a navegação, podem existir registros técnicos de hospedagem, endereço IP, dispositivo, navegador, páginas acessadas e parâmetros de campanha.
+       </p>
+<div class="legal-table">
+<table>
+<thead><tr><th>Grupo de dados</th><th>Exemplos</th><th>Origem</th><th>Obrigatoriedade</th></tr></thead>
+<tbody>
+<tr><td>Identificação e contato</td><td>Nome, empresa, telefone, e-mail</td><td>Informados pelo visitante</td><td>Somente o necessário para responder</td></tr>
+<tr><td>Contexto do projeto</td><td>Segmento, situação atual, objetivo, prazo, mensagem</td><td>Formulário ou conversa</td><td>Opcional, exceto quando indicado no formulário</td></tr>
+<tr><td>Navegação e segurança</td><td>IP, agente do navegador, horário, URL, falhas</td><td>Hospedagem e infraestrutura</td><td>Gerados tecnicamente</td></tr>
+<tr><td>Atribuição de campanha</td><td>UTMs, fbclid e página de origem</td><td>Endereço acessado</td><td>Temporários durante a sessão</td></tr>
+<tr><td>Preferências</td><td>Consentimento, tema, contraste, texto, movimento, autoplay</td><td>Escolhas na central</td><td>Configuradas pelo visitante</td></tr>
+</tbody>
+</table>
+</div>
+<h3>Funcionamento dos formulários</h3>
+<p>
+        Os formulários públicos são executados no navegador. Ao enviar, o site valida os campos, organiza um texto legível e solicita a abertura do WhatsApp. A mensagem só é transmitida à Meta e à Carthage se o visitante confirmar o envio no aplicativo ou serviço do WhatsApp. O simples preenchimento, sem envio, não cria um cadastro de lead em servidor próprio da Carthage.
        </p>
 </section>
 <section class="legal-section" id="finalidades">
@@ -427,6 +453,10 @@
          cumprir obrigações legais e exercer direitos.
         </li>
 </ul>
+<h3>Limitação de finalidade</h3>
+<p>
+        Informações enviadas para avaliar um projeto não devem ser reutilizadas para finalidades incompatíveis. A Carthage evita pedir documentos pessoais, credenciais, bases de clientes ou segredos comerciais no primeiro contato. Caso um material sensível seja necessário durante um projeto, o canal, a permissão, o acesso e o período de retenção devem ser definidos separadamente.
+       </p>
 </section>
 <section class="legal-section" id="bases">
 <h2>
@@ -438,6 +468,17 @@
 <div class="legal-callout">
         Tecnologias analíticas e publicitárias permanecem desativadas antes da escolha do visitante.
        </div>
+<div class="legal-table">
+<table>
+<thead><tr><th>Finalidade</th><th>Base considerada</th><th>Salvaguardas</th></tr></thead>
+<tbody>
+<tr><td>Responder uma solicitação e preparar proposta</td><td>Procedimentos preliminares e legítimo interesse compatível com a iniciativa do titular</td><td>Coleta reduzida, canal informado e ausência de cadastro oculto</td></tr>
+<tr><td>Executar projeto contratado</td><td>Execução de contrato e obrigações relacionadas</td><td>Acessos proporcionais, documentação e delimitação de escopo</td></tr>
+<tr><td>Segurança e defesa de direitos</td><td>Legítimo interesse, obrigação legal e exercício regular de direitos</td><td>Registros limitados, controle de acesso e revisão de necessidade</td></tr>
+<tr><td>Analytics, publicidade e preferências opcionais</td><td>Consentimento</td><td>Desligados por padrão, escolha granular e revogação acessível</td></tr>
+</tbody>
+</table>
+</div>
 </section>
 <section class="legal-section" id="campanhas">
 <h2>
@@ -451,6 +492,26 @@
        </p>
 <p>
         Eventos como PageView, ServiceView, PromotionView e intenção de contato podem ser registrados. Nenhum “lead” deve representar mera abertura de página ou do WhatsApp.
+       </p>
+<h3>O que cada evento significa</h3>
+<ul>
+<li><strong>PageView:</strong> carregamento de página após a autorização aplicável;</li>
+<li><strong>ServiceView e PortfolioView:</strong> acesso a páginas de solução ou estudo de caso;</li>
+<li><strong>PromotionView e PromotionClick:</strong> visualização ou ação consciente na página promocional;</li>
+<li><strong>FormStart:</strong> primeira interação no formulário, sem transmitir o conteúdo digitado;</li>
+<li><strong>FormPrepared:</strong> validação concluída antes da abertura do WhatsApp, sem significar que a mensagem foi enviada.</li>
+</ul>
+<p>
+        A Carthage não configura o site para enviar ao Analytics ou ao Meta Pixel o texto livre dos formulários, e-mails, telefones ou conteúdo das conversas. Identificadores e parâmetros tratados pelos fornecedores seguem as políticas dessas plataformas quando a categoria correspondente é autorizada.
+       </p>
+</section>
+<section class="legal-section" id="transparencia">
+<h2>6. Transparência, perfis e decisões automatizadas</h2>
+<p>
+        O site pode usar parâmetros de campanha para compreender de qual anúncio ou origem uma visita veio. Essa atribuição não toma decisões que produzam efeitos jurídicos, não define automaticamente preço, não recusa projetos e não substitui análise humana.
+       </p>
+<p>
+        O diagnóstico interativo de soluções é apenas orientativo: ele apresenta uma rota com base na opção clicada. A recomendação não utiliza dados ocultos, pontuação de risco, reconhecimento de identidade ou perfil comportamental. Valores, prazos e viabilidade são avaliados posteriormente com base no contexto declarado e no escopo real.
        </p>
 </section>
 
@@ -519,6 +580,15 @@
            </td>
 </tr>
 <tr>
+<td>Facebook</td><td>Direcionamento à página social oficial</td><td>A interação ocorre na plataforma externa</td>
+</tr>
+<tr>
+<td>Google Analytics, se configurado</td><td>Métricas agregadas após consentimento</td><td>Eventos, dispositivo e identificadores técnicos permitidos</td>
+</tr>
+<tr>
+<td>Vercel ou hospedagem equivalente</td><td>Entrega do site, proteção e registros operacionais</td><td>IP, requisição, data, resposta e dados técnicos</td>
+</tr>
+<tr>
 <td>
             Prestadores contratados
            </td>
@@ -535,6 +605,10 @@
 <p>
         A Carthage não vende dados pessoais.
        </p>
+<h3>Transferências e plataformas externas</h3>
+<p>
+        Alguns fornecedores podem processar dados em infraestrutura localizada fora do Brasil. Quando isso ocorrer, a Carthage considera as informações públicas, os mecanismos contratuais e as medidas disponibilizadas pelo fornecedor, limita as categorias ativadas e evita transmitir conteúdo de formulário a ferramentas de medição. Ao seguir um link para WhatsApp, Instagram ou Facebook, o visitante passa a interagir com ambiente controlado pela respectiva plataforma.
+       </p>
 </section>
 <section class="legal-section" id="retencao">
 <h2>
@@ -546,6 +620,22 @@
 <p>
         São aplicadas medidas proporcionais como controle de acesso, autenticação, redução da coleta e limitação de compartilhamentos. Nenhum ambiente digital é absolutamente invulnerável.
        </p>
+<div class="legal-table">
+<table>
+<thead><tr><th>Registro ou informação</th><th>Critério de retenção</th></tr></thead>
+<tbody>
+<tr><td>UTMs, fbclid e fechamento do aviso promocional</td><td>Até o encerramento da sessão do navegador</td></tr>
+<tr><td>Consentimento e preferências da interface</td><td>Até alteração, limpeza local ou mudança de versão</td></tr>
+<tr><td>Conversas e propostas não contratadas</td><td>Enquanto houver negociação legítima, necessidade de retorno ou defesa de direitos</td></tr>
+<tr><td>Dados de clientes e documentos de projeto</td><td>Durante a execução, suporte acordado e prazos legais/contratuais aplicáveis</td></tr>
+<tr><td>Registros de infraestrutura</td><td>Conforme segurança, prevenção de abuso e política do provedor</td></tr>
+</tbody>
+</table>
+</div>
+<h3>Medidas de segurança e resposta</h3>
+<p>
+        Entre as medidas possíveis estão autenticação multifator em contas compatíveis, separação de acessos, princípio do menor privilégio, revisão de links públicos, atualização de dependências, cópias de segurança proporcionais, registro de alterações e remoção de credenciais antes de publicar arquivos. Suspeitas de incidente são avaliadas quanto à natureza dos dados, extensão, riscos, contenção e comunicações exigidas.
+       </p>
 </section>
 <section class="legal-section" id="direitos">
 <h2>
@@ -554,12 +644,26 @@
 <p>
         O titular pode solicitar confirmação, acesso, correção, informações sobre compartilhamento, eliminação quando aplicável, revogação do consentimento, oposição e demais direitos previstos na legislação.
        </p>
+<ul>
+<li>confirmar a existência de tratamento e obter acesso aos dados;</li>
+<li>corrigir informações incompletas, inexatas ou desatualizadas;</li>
+<li>solicitar anonimização, bloqueio ou eliminação de dados desnecessários ou tratados em desconformidade;</li>
+<li>pedir portabilidade, quando tecnicamente e legalmente aplicável;</li>
+<li>conhecer entidades públicas e privadas com as quais houve compartilhamento;</li>
+<li>revogar consentimento e conhecer as consequências da negativa;</li>
+<li>opor-se a tratamento baseado em hipótese que dispense consentimento quando houver descumprimento;</li>
+<li>solicitar revisão e explicação sobre decisões exclusivamente automatizadas, caso venham a existir.</li>
+</ul>
 <p>
         A solicitação pode exigir confirmação de identidade. Contato:
         <a href="mailto:carthage.incorporated@gmail.com">
          carthage.incorporated@gmail.com
         </a>
         .
+       </p>
+<h3>Como a solicitação é tratada</h3>
+<p>
+        O pedido deve indicar o direito pretendido e um meio seguro de resposta. Para evitar divulgação a terceiros, a Carthage poderá solicitar informações proporcionais para confirmar a identidade ou a representação. Pedidos manifestamente genéricos podem exigir esclarecimento. Restrições legais, segredos comerciais, dados de terceiros e obrigações de retenção serão explicados quando impedirem atendimento integral.
        </p>
 </section>
 <section class="legal-section" id="menores">
@@ -569,6 +673,9 @@
 <p>
         Os serviços são direcionados a empresas e responsáveis pela contratação de serviços digitais. O site não busca coletar intencionalmente dados de crianças. Um responsável pode solicitar análise e exclusão pelo canal de privacidade.
        </p>
+<p>
+        Não são usados perfis infantis, publicidade direcionada a crianças ou formulários destinados a esse público. Caso a Carthage identifique envio inadequado de dados de criança ou adolescente, avaliará bloqueio, exclusão, preservação mínima exigida e contato com responsável quando necessário.
+       </p>
 </section>
 <section class="legal-section" id="atualizacoes">
 <h2>
@@ -576,6 +683,15 @@
        </h2>
 <p>
         Esta política pode ser atualizada quando houver mudanças legais, cadastrais, operacionais, de fornecedores, aplicativo, vídeos, formulários ou rastreamento. A versão vigente exibe a data no topo.
+       </p>
+<p>
+        Alterações materiais devem ser acompanhadas de nova data de vigência e, quando modificarem categorias opcionais ou finalidades dependentes de consentimento, podem provocar nova solicitação de escolha. Versões anteriores poderão ser preservadas internamente para demonstrar a evolução das práticas.
+       </p>
+<h3>Referências institucionais</h3>
+<p>
+        Para conhecer direitos e orientações oficiais, consulte a
+        <a href="https://www.gov.br/anpd/pt-br/assuntos/legislacao/lgpd" rel="noopener" target="_blank">Autoridade Nacional de Proteção de Dados</a>
+        e o portal de legislação brasileira. Esta política descreve a operação atual da Carthage e deve ser revisada quando houver CNPJ definitivo, equipe, novo fornecedor, banco de dados próprio ou mudança relevante de produto.
        </p>
 </section>
 </div>
