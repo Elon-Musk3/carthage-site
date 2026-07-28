@@ -1,6 +1,6 @@
 # Relatório de validação — Carthage
 
-Validação executada em 28 de julho de 2026 sobre a versão 16 desta pasta.
+Validação executada em 28 de julho de 2026 sobre a versão 17 desta pasta.
 
 ## Resultado
 
@@ -21,8 +21,9 @@ Validação executada em 28 de julho de 2026 sobre a versão 16 desta pasta.
 - **Revelação durante a rolagem:** um teste dedicado manteve um bloco abaixo da dobra no estado `queued`, revelou apenas o conteúdo inicialmente visível e confirmou a entrada do bloco seguinte após um evento real de rolagem. O motor também possui fallback por `requestAnimationFrame` para navegadores ou situações em que o observador não dispare como esperado.
 - **Movimento responsável:** megamenu, revelações, profundidade, luz contextual e magnetismo possuem fallback explícito para `prefers-reduced-motion`, sem ocultar conteúdo nem deslocar o painel.
 - **Teste comportamental do DOM:** abertura por hover, troca direta entre categorias, fechamento temporizado, fundo contextual, menu mobile, acordeões e estado de movimento reduzido foram executados sem falhas no teste automatizado incluído no fluxo de QA.
-- **Teste integrado preservado na versão 16:** 42 verificações adicionais foram aprovadas, cobrindo seletores por cursor, exclusividade de painel, fechamento após `pointerleave`, sincronização com o campo nativo, sugestões de prazo, diagnóstico, comparador nos limites de 0%/100%, recorte dos rótulos por camada, persistência, preferências de interface, pausa de vídeo, Facebook e atualização do rodapé.
+- **Teste integrado preservado na versão 17:** 42 verificações adicionais foram aprovadas, cobrindo seletores por cursor, exclusividade de painel, fechamento após `pointerleave`, sincronização com o campo nativo, sugestões de prazo, diagnóstico, comparador nos limites de 0%/100%, recorte dos rótulos por camada, persistência, preferências de interface, pausa de vídeo, Facebook e atualização do rodapé.
 - **Navegação móvel dedicada:** as 22 páginas foram percorridas estruturalmente e os 16 cabeçalhos compartilhados foram confirmados com **Soluções** como primeiro item; abertura, fechamento pelo botão, toque fora, acordeões, restauração da rolagem em 920 px, ancoragem do cabeçalho, `pagehide`, `pageshow` e `popstate` foram exercitados sem falhas.
+- **Restauração móvel reforçada:** o fechamento no meio da página agora desativa temporariamente a rolagem suave, reaplica a coordenada registrada imediatamente e a confirma nos dois quadros seguintes, neutralizando alterações tardias da barra do navegador e da viewport visual.
 - **Cabeçalho após rolagem:** ao abrir o menu no meio da página, a geometria visível do cabeçalho é preservada em posição fixa durante o bloqueio temporário do conteúdo; o painel é ancorado abaixo dela e recebe altura compatível com o `visualViewport`.
 - **Histórico sem bloqueio visual:** a classe de saída e qualquer temporizador pendente da transição são eliminados antes de congelar a página e novamente quando ela é restaurada; o retorno pelo botão Voltar não mantém a camada de carregamento nem o menu anterior.
 - **Responsabilidade digital:** 12 verificações dedicadas confirmaram o núcleo editorial, os quatro pilares na ordem prevista, ícones SVG exclusivos, descrições, resultados, animação de entrada, reorganização responsiva, redução de movimento e remoção do antigo diagrama genérico.

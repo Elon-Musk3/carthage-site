@@ -21,6 +21,7 @@
   let mobileScrim = null;
   let mobileIsOpen = false;
   let lockedScrollY = 0;
+  let mobileScrollRestoreFrame = 0;
   let transitionNavigationTimer = 0;
 
   const setHeaderState = () => header?.classList.toggle('is-scrolled', window.scrollY > 18);
@@ -226,6 +227,60 @@
     ].forEach((property) => rootStyle.removeProperty(property));
   };
 
+  const readPageScrollY = () => {
+    const candidates = [
+      window.scrollY,
+      window.pageYOffset,
+      document.scrollingElement?.scrollTop,
+      document.documentElement.scrollTop,
+      document.body?.scrollTop
+    ].map((value) => Number(value) || 0);
+    return Math.max(0, ...candidates);
+  };
+
+  const cancelMobileScrollRestore = () => {
+    if (mobileScrollRestoreFrame) window.cancelAnimationFrame(mobileScrollRestoreFrame);
+    mobileScrollRestoreFrame = 0;
+    document.documentElement.classList.remove('is-restoring-mobile-scroll');
+  };
+
+  const restoreMobileScroll = (targetY) => {
+    const normalizedTarget = Math.max(0, Math.round(Number(targetY) || 0));
+    const root = document.documentElement;
+    let confirmations = 0;
+
+    cancelMobileScrollRestore();
+    root.classList.add('is-restoring-mobile-scroll');
+
+    const applyPosition = () => {
+      window.scrollTo(0, normalizedTarget);
+      const scrollingElement = document.scrollingElement;
+      if (scrollingElement && Math.abs((scrollingElement.scrollTop || 0) - normalizedTarget) > 1) {
+        scrollingElement.scrollTop = normalizedTarget;
+      }
+    };
+
+    const confirmPosition = () => {
+      if (mobileIsOpen) {
+        cancelMobileScrollRestore();
+        return;
+      }
+
+      applyPosition();
+      confirmations += 1;
+      if (confirmations < 2) {
+        mobileScrollRestoreFrame = window.requestAnimationFrame(confirmPosition);
+        return;
+      }
+
+      mobileScrollRestoreFrame = 0;
+      root.classList.remove('is-restoring-mobile-scroll');
+    };
+
+    applyPosition();
+    mobileScrollRestoreFrame = window.requestAnimationFrame(confirmPosition);
+  };
+
   const setMobileOpen = (
     open,
     {
@@ -238,9 +293,10 @@
     const wasOpen = mobileIsOpen || !mobilePanel.hidden || document.documentElement.classList.contains('menu-open');
 
     if (open) {
+      cancelMobileScrollRestore();
       closeMegaMenus({ immediate: true });
       lastFocusedBeforeMobile = document.activeElement;
-      lockedScrollY = window.scrollY;
+      lockedScrollY = readPageScrollY();
       syncMobileGeometry();
       document.documentElement.style.setProperty('--menu-scroll-offset', `${-lockedScrollY}px`);
       mobilePanel.scrollTop = 0;
@@ -259,6 +315,7 @@
       return;
     }
 
+    const scrollTarget = lockedScrollY;
     mobileIsOpen = false;
     mobilePanel.hidden = true;
     if (mobileScrim) mobileScrim.hidden = true;
@@ -268,10 +325,10 @@
     if (resetAccordions) resetMobileAccordions();
     clearMobileGeometry();
 
-    if (wasOpen && restoreScroll) window.scrollTo(0, lockedScrollY);
     if (wasOpen && restoreFocus && lastFocusedBeforeMobile instanceof HTMLElement && lastFocusedBeforeMobile.isConnected) {
       lastFocusedBeforeMobile.focus({ preventScroll: true });
     }
+    if (wasOpen && restoreScroll) restoreMobileScroll(scrollTarget);
   };
 
   const initMegaMenu = () => {

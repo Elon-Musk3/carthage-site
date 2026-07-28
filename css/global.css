@@ -342,6 +342,9 @@ html[data-interface-motion="reduced"] [data-motion-child] {
 }
 
 :target { scroll-margin-top: 118px; }
+html.is-restoring-mobile-scroll {
+  scroll-behavior: auto !important;
+}
 html.menu-open,
 html.menu-open body {
   overscroll-behavior: none;
