@@ -22,6 +22,8 @@
 - [ ] Trocar a demonstração entre Desktop, Tablet e Celular e confirmar que imagem, moldura, estado e descrição mudam juntos.
 - [ ] Arrastar o comparador por mouse e toque e operá-lo pelas setas do teclado.
 - [ ] Levar o comparador até 0% e 100%, soltar o ponteiro e confirmar que ele permanece no limite sem selecionar a imagem.
+- [ ] Tentar arrastar imagens, vídeos, ícones e logotipos; confirmar que nenhum arquivo cria miniatura de arraste ou menu de salvamento, sem afetar comparadores e controles interativos.
+- [ ] Confirmar que títulos, menus e rótulos estruturais não são selecionáveis, enquanto parágrafos explicativos e campos de formulário continuam selecionáveis e copiáveis.
 - [ ] Com movimento reduzido ativado, confirmar que nenhum texto fica transparente, borrado ou deslocado e que profundidade e magnetismo são desativados.
 - [ ] Manter `aplicativo.html` fora da navegação e do sitemap enquanto não existir produto real.
 - [ ] Abrir a Central de escolhas e testar tema, contraste, texto ampliado, densidade compacta, redução de movimento e autoplay desligado; atualizar a página e conferir a persistência.

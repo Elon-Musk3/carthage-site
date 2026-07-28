@@ -1,11 +1,11 @@
 # Relatório de validação — Carthage
 
-Validação executada em 28 de julho de 2026 sobre a versão 12 desta pasta.
+Validação executada em 28 de julho de 2026 sobre a versão 15 desta pasta.
 
 ## Resultado
 
 - **22 páginas HTML verificadas**, incluindo homepage, soluções, serviços, portfólio, estudo de caso, contato, páginas legais e as três novas experiências responsivas.
-- **Links e mídias locais:** 1.361 referências locais presentes no HTML foram verificadas; todos os destinos referenciados existem.
+- **Links e mídias locais:** 1.369 referências locais presentes no HTML foram verificadas; todos os destinos referenciados existem.
 - **Assets:** CSS, JavaScript, SVGs, imagens, favicons e manifesto referenciados foram encontrados.
 - **Imagens:** elementos públicos possuem texto alternativo e dimensões declaradas.
 - **Semântica:** uma única região `main` e um único `h1` por página; tags estruturais balanceadas.
@@ -21,7 +21,10 @@ Validação executada em 28 de julho de 2026 sobre a versão 12 desta pasta.
 - **Revelação durante a rolagem:** um teste dedicado manteve um bloco abaixo da dobra no estado `queued`, revelou apenas o conteúdo inicialmente visível e confirmou a entrada do bloco seguinte após um evento real de rolagem. O motor também possui fallback por `requestAnimationFrame` para navegadores ou situações em que o observador não dispare como esperado.
 - **Movimento responsável:** megamenu, revelações, profundidade, luz contextual e magnetismo possuem fallback explícito para `prefers-reduced-motion`, sem ocultar conteúdo nem deslocar o painel.
 - **Teste comportamental do DOM:** abertura por hover, troca direta entre categorias, fechamento temporizado, fundo contextual, menu mobile, acordeões e estado de movimento reduzido foram executados sem falhas no teste automatizado incluído no fluxo de QA.
-- **Teste integrado da versão 12:** 42 verificações adicionais foram aprovadas, cobrindo seletores por cursor, exclusividade de painel, fechamento após `pointerleave`, sincronização com o campo nativo, sugestões de prazo, diagnóstico, comparador nos limites de 0%/100%, recorte dos rótulos por camada, persistência, preferências de interface, pausa de vídeo, Facebook e atualização do rodapé.
+- **Teste integrado preservado na versão 15:** 42 verificações adicionais foram aprovadas, cobrindo seletores por cursor, exclusividade de painel, fechamento após `pointerleave`, sincronização com o campo nativo, sugestões de prazo, diagnóstico, comparador nos limites de 0%/100%, recorte dos rótulos por camada, persistência, preferências de interface, pausa de vídeo, Facebook e atualização do rodapé.
+- **Responsabilidade digital:** 12 verificações dedicadas confirmaram o núcleo editorial, os quatro pilares na ordem prevista, ícones SVG exclusivos, descrições, resultados, animação de entrada, reorganização responsiva, redução de movimento e remoção do antigo diagrama genérico.
+- **Contraste dos valores:** os quatro cartões da seção branca usam fundo opaco claro, títulos em azul-marinho, parágrafos em azul-acinzentado escuro e números em ciano profundo; não dependem mais das variáveis de texto destinadas às superfícies escuras.
+- **Teste dedicado de proteção editorial:** dez verificações comportamentais confirmaram `draggable="false"` em mídias e links associados, cancelamento de arraste e menu contextual sobre imagens, bloqueio de seleção em títulos e preservação da seleção em parágrafos e campos editáveis.
 - **SEO:** títulos, descrições, canonical e metadados essenciais verificados.
 - **Experiências responsivas:** `responsividade-desktop.html`, `responsividade-tablet.html` e `responsividade-celular.html` possuem título, descrição, canonical, um único `h1`, imagens reais, diagramas semânticos, critérios técnicos, links cruzados e CTAs válidos. Tablet e celular usam capturas independentes do projeto publicado em 768 × 1024 px e 390 × 844 px @2x, sem recorte da mídia desktop.
 - **Conteúdo comercial:** a homepage e a página de soluções distinguem sites, portais, sistemas, SaaS, aplicativos/PWA, dados, APIs, integrações e automações; a faixa de referência foi padronizada para **R$ 925–R$ 1.499**, com ressalvas de escopo e custos externos.
@@ -46,6 +49,8 @@ Validação executada em 28 de julho de 2026 sobre a versão 12 desta pasta.
 - **Presença digital:** o núcleo “Presença própria” contém quatro módulos semânticos e uma rota operacional; o protocolo seguinte contém cinco etapas completas, com ícones, responsabilidades, entregáveis e continuidade.
 - **Presença digital responsiva:** o núcleo e seus quatro módulos respondem à largura interna do próprio painel. Na coluna lateral do hero, o resumo permanece horizontal e os ativos formam uma malha 2 × 2; abaixo de 330 px internos, o conjunto passa a uma coluna. Ícones, títulos, descrições e marcadores mantêm largura mínima flexível, sem corte horizontal nem palavras espremidas.
 - **Geometria dos formulários:** a lista de cada seletor personalizado permanece ancorada ao gatilho correspondente, sem herdar a altura de outro campo na mesma linha da grade.
+- **Proteção editorial seletiva:** todas as páginas que usam a estrutura pública recebem bloqueio de arraste nativo; mídias e logotipos não oferecem menu contextual de salvamento; títulos, navegação, categorias, subcategorias e controles não exibem seleção acidental.
+- **Texto e formulários preservados:** parágrafos e listas explicativas continuam selecionáveis e copiáveis; inputs, áreas de texto, selects e conteúdo editável mantêm seleção, preenchimento, foco e interação normal.
 
 ## Rotas críticas testadas
 

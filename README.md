@@ -1,4 +1,4 @@
-# Carthage — site revisado · versão 12
+# Carthage — site revisado · versão 15
 
 Versão estática multipágina revisada em 28 de julho de 2026. A estrutura original de pastas e arquivos foi preservada; páginas, estilos, scripts, ícones e mídias foram refinados dentro dela.
 
@@ -41,9 +41,13 @@ Versão estática multipágina revisada em 28 de julho de 2026. A estrutura orig
 - diagramas antes compostos por caixas vazias foram substituídos por mapas editoriais com ícones, numeração, responsabilidades, entregáveis e relações legíveis nas páginas de Soluções e Presença digital;
 - a arquitetura de **Presença própria** foi reconstruída como um painel editorial com núcleo, quatro ativos documentados e rota operacional; o fluxo de cinco etapas agora explica responsabilidade, saída e continuidade em vez de exibir formas geométricas vazias;
 - o painel de **Presença própria** passou a responder à largura real da coluna do hero, não apenas à largura geral da janela: o núcleo ocupa um resumo horizontal compacto, os quatro ativos formam uma malha 2 × 2 legível e, quando o próprio componente fica estreito, migram para uma coluna sem cortar ícones, palavras ou cartões;
+- o antigo conjunto cru de cinco caixas da página **Sobre** foi reconstruído como um sistema editorial de responsabilidade digital: núcleo explicativo, quatro pilares numerados com ícones vetoriais próprios, descrições, resultados, conexões visuais, entrada escalonada, respostas ao cursor e reorganização responsiva;
+- os quatro cartões editoriais de **Clareza**, **Coerência**, **Preservação** e **Transparência** receberam superfície clara própria, texto de alto contraste, numeração legível, acento cromático e profundidade compatível com a seção branca, eliminando o aspecto lavado produzido pela antiga transparência escura;
 - o diagnóstico de soluções passou a apresentar justificativa, quatro entregáveis e uma ação específica para cada uma das seis situações, evitando um botão genérico que retornava à própria página;
 - os quatro canais da página de contato receberam uma malha fixa para centralização dos ícones, alinhamento do texto e indicador externo; o rodapé diferencia explicitamente **Contato pelo WhatsApp** e inclui Facebook logo após Instagram;
 - os seletores personalizados permanecem ancorados imediatamente abaixo do respectivo campo mesmo quando outro campo da mesma linha aumenta a altura da grade;
+- imagens, vídeos, SVGs, logotipos e demais mídias não iniciam mais o arraste nativo, o menu contextual de salvamento é bloqueado sobre essas superfícies e os links que envolvem mídia também recebem `draggable="false"`;
+- títulos, menus, categorias, subcategorias, breadcrumbs, botões e rótulos estruturais não exibem seleção de texto; parágrafos, listas explicativas, campos, áreas editáveis e demais conteúdos de leitura continuam selecionáveis e copiáveis;
 - a Central de Privacidade deixou de ser uma coleção de chaves sem efeito: tema, contraste, tamanho do texto, densidade, intensidade de movimento e reprodução automática agora são aplicados imediatamente e persistidos localmente quando autorizados;
 - Política de Privacidade, Política de Cookies e Termos de Uso foram ampliados com bases, finalidades, retenção, fornecedores, transferências, segurança, direitos, tecnologias, escopo, preços de referência, alterações, propriedade intelectual, serviços externos e versionamento próprios da operação descrita pela Carthage;
 - as páginas legais usam uma composição tipográfica mais densa, tabelas, notas e chamadas de atenção sem sacrificar legibilidade, navegação por títulos ou adaptação para telas menores;

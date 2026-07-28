@@ -46,5 +46,75 @@
     });
   });
 
+  /*
+   * Proteção editorial seletiva.
+   *
+   * Impede o arraste nativo de arquivos e a seleção acidental de títulos,
+   * menus e controles, sem interferir na seleção dos textos explicativos,
+   * no preenchimento dos formulários ou nos controles por ponteiro/teclado.
+   */
+  const mediaSelector = 'img, picture, video, canvas, svg, [data-protected-media]';
+  const protectedSelectionSelector = [
+    'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+    '.eyebrow',
+    '.brand',
+    '.breadcrumbs',
+    'nav',
+    '.mega-panel',
+    '.btn',
+    'button',
+    'summary',
+    'label',
+    'legend',
+    '[role="button"]',
+    '[role="tab"]',
+    '[role="menuitem"]',
+    '[data-copy-protected]'
+  ].join(', ');
+  const editableSelector = [
+    'input',
+    'textarea',
+    'select',
+    'option',
+    '[contenteditable="true"]',
+    '[data-copy-allowed]'
+  ].join(', ');
+
+  const eventElement = (target) => {
+    if (target instanceof Element) return target;
+    return target?.parentElement instanceof Element ? target.parentElement : null;
+  };
+
+  document.querySelectorAll(mediaSelector).forEach((media) => {
+    media.setAttribute('draggable', 'false');
+    if ('draggable' in media) media.draggable = false;
+    media.dataset.protectedMedia = '';
+
+    const mediaLink = media.closest('a');
+    if (mediaLink) {
+      mediaLink.setAttribute('draggable', 'false');
+      if ('draggable' in mediaLink) mediaLink.draggable = false;
+    }
+  });
+
+  document.querySelectorAll(protectedSelectionSelector).forEach((element) => {
+    element.dataset.copyProtected = '';
+  });
+
+  document.addEventListener('dragstart', (event) => {
+    event.preventDefault();
+  }, { capture: true });
+
+  document.addEventListener('contextmenu', (event) => {
+    const element = eventElement(event.target);
+    if (element?.closest(`${mediaSelector}, .brand`)) event.preventDefault();
+  }, { capture: true });
+
+  document.addEventListener('selectstart', (event) => {
+    const element = eventElement(event.target);
+    if (!element || element.closest(editableSelector)) return;
+    if (element.closest(protectedSelectionSelector)) event.preventDefault();
+  }, { capture: true });
+
   window.addEventListener('load', () => document.body.classList.add('is-loaded'), { once: true });
 })();
