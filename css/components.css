@@ -574,7 +574,12 @@ html.menu-open .mobile-menu > *:nth-child(6) { animation-delay: 170ms; }
 
 .form-card { padding: clamp(24px, 4vw, 44px); border: 1px solid var(--line-dark); border-radius: var(--radius-lg); background: rgba(9,33,63,.58); box-shadow: var(--shadow-md); }
 .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
-.field { display: grid; gap: 7px; }
+.field {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 7px;
+}
 .field--full { grid-column: 1/-1; }
 .field label { font-weight: 720; font-size: .88rem; }
 .field input, .field select, .field textarea {
@@ -839,8 +844,15 @@ html.menu-open .mobile-menu > *:nth-child(6) { animation-delay: 170ms; }
 
 .enhanced-select {
   position: relative;
+  z-index: 1;
+  display: block;
+  align-self: start;
+  width: 100%;
   min-width: 0;
+  isolation: isolate;
 }
+.enhanced-select.is-open { z-index: 80; }
+.field:has(.enhanced-select.is-open) { z-index: 80; }
 select.enhanced-select__native {
   position: absolute !important;
   width: 1px !important;
@@ -894,10 +906,10 @@ select.enhanced-select__native {
 .enhanced-select.is-open .enhanced-select__trigger svg { transform: rotate(180deg); }
 .enhanced-select__list {
   position: absolute;
-  z-index: 40;
-  top: calc(100% + 8px);
-  right: 0;
-  left: 0;
+  z-index: 90;
+  inset: calc(100% + 5px) 0 auto;
+  width: 100%;
+  margin: 0;
   max-height: 310px;
   padding: 8px;
   overflow-y: auto;

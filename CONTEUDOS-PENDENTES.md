@@ -16,6 +16,6 @@ O site está funcional sem estes itens. Eles só devem entrar quando forem reais
 3. **Métricas verificáveis:** publicar somente após período de medição definido e com fonte identificada.
 4. **Identidade vetorial completa:** versões oficiais do símbolo e assinatura em SVG, monocromia, fundos e regras mínimas de uso.
 5. **Configurações de produção:** validar GA4, Meta Pixel, domínio, DNS, hospedagem e política jurídica antes de ativar.
-6. **Endereço oficial do Facebook:** o rodapé está preparado para `https://www.facebook.com/carthage.inc`, seguindo o identificador público usado no Instagram, mas a página não apareceu nos resultados públicos consultados. Confirmar o endereço exato antes da publicação.
+6. **Facebook resolvido:** a página oficial **Carthage Inc** foi confirmada e vinculada em `https://www.facebook.com/profile.php?id=61591788260760`.
 
 Não é necessário criar projetos fictícios para ocupar espaço. O portfólio deve crescer apenas com trabalhos reais.

@@ -10,8 +10,8 @@
     whatsappNumber: '5562999810066',
     instagramHandle: '@carthage.inc',
     instagramUrl: 'https://www.instagram.com/carthage.inc',
-    facebookLabel: 'Carthage no Facebook',
-    facebookUrl: 'https://www.facebook.com/carthage.inc',
+    facebookLabel: 'Carthage Inc no Facebook',
+    facebookUrl: 'https://www.facebook.com/profile.php?id=61591788260760',
     promotionEnabled: true
   });
 

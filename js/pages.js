@@ -95,59 +95,96 @@
       const frame = wrap.querySelector('[data-before-after]');
       if (!control || !frame) return;
 
+      const beforeLabel = frame.querySelector('.before-after__media--before .before-after__label');
+      const afterLabel = frame.querySelector('.before-after__media--after .before-after__label');
       let dragging = false;
+      let activePointerId = null;
       let hasInteracted = false;
       let animationFrame = 0;
+      let observer = null;
+      const clampValue = (rawValue, fallback = 50) => {
+        const parsed = Number.parseFloat(rawValue);
+        const value = Number.isFinite(parsed) ? parsed : fallback;
+        return Math.max(0, Math.min(100, value));
+      };
+      const cancelIntro = () => {
+        hasInteracted = true;
+        frame.classList.remove('is-intro');
+        if (animationFrame) cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
+        observer?.disconnect();
+      };
       const media = [...frame.querySelectorAll('img')];
       media.forEach((image) => {
         image.draggable = false;
         image.addEventListener('dragstart', (event) => event.preventDefault());
       });
       const update = () => {
-        const value = Math.max(0, Math.min(100, Number(control.value) || 50));
+        const value = clampValue(control.value);
+        control.value = String(Math.round(value));
         frame.style.setProperty('--split', `${value}%`);
-        control.setAttribute('aria-valuetext', `${value}% do protótipo visível e ${100 - value}% da interface publicada visível`);
+        control.setAttribute('aria-valuetext', `${value}% da simulação anterior visível e ${100 - value}% da interface publicada visível`);
+
+        const frameWidth = frame.getBoundingClientRect().width || frame.clientWidth || 1000;
+        const requiredSpace = (label) => {
+          const measuredWidth = label?.getBoundingClientRect().width || label?.scrollWidth || 220;
+          return Math.min(frameWidth * .48, measuredWidth + 44);
+        };
+        const beforeHidden = (frameWidth * value / 100) < requiredSpace(beforeLabel);
+        const afterHidden = (frameWidth * (100 - value) / 100) < requiredSpace(afterLabel);
+        frame.classList.toggle('is-before-label-hidden', beforeHidden);
+        frame.classList.toggle('is-after-label-hidden', afterHidden);
+        beforeLabel?.setAttribute('aria-hidden', String(beforeHidden));
+        afterLabel?.setAttribute('aria-hidden', String(afterHidden));
       };
       const setFromPointer = (event) => {
         const rect = frame.getBoundingClientRect();
         if (!rect.width) return;
-        const value = ((event.clientX - rect.left) / rect.width) * 100;
-        control.value = String(Math.round(Math.max(0, Math.min(100, value))));
+        const pointerX = Math.max(rect.left, Math.min(rect.right, event.clientX));
+        const value = ((pointerX - rect.left) / rect.width) * 100;
+        control.value = String(Math.round(clampValue(value)));
         update();
       };
 
       control.addEventListener('input', (event) => {
-        if (event.isTrusted) {
-          hasInteracted = true;
-          if (animationFrame) cancelAnimationFrame(animationFrame);
-        }
+        if (event.isTrusted) cancelIntro();
         update();
       });
+      control.addEventListener('pointerdown', cancelIntro);
+      control.addEventListener('keydown', (event) => {
+        if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End', 'PageUp', 'PageDown'].includes(event.key)) {
+          cancelIntro();
+        }
+      });
+      frame.addEventListener('dragstart', (event) => event.preventDefault());
+      frame.addEventListener('selectstart', (event) => event.preventDefault());
       frame.addEventListener('pointerdown', (event) => {
         if (event.pointerType === 'mouse' && event.button !== 0) return;
         event.preventDefault();
-        hasInteracted = true;
-        if (animationFrame) cancelAnimationFrame(animationFrame);
+        cancelIntro();
         dragging = true;
+        activePointerId = event.pointerId;
         frame.classList.add('is-dragging');
         frame.setPointerCapture?.(event.pointerId);
         setFromPointer(event);
       });
       frame.addEventListener('pointermove', (event) => {
-        if (!dragging) return;
+        if (!dragging || event.pointerId !== activePointerId) return;
         event.preventDefault();
         setFromPointer(event);
       });
       const stopDragging = (event) => {
-        if (!dragging) return;
+        if (!dragging || (activePointerId !== null && event.pointerId !== activePointerId)) return;
         dragging = false;
         frame.classList.remove('is-dragging');
         if (frame.hasPointerCapture?.(event.pointerId)) frame.releasePointerCapture(event.pointerId);
+        activePointerId = null;
       };
       frame.addEventListener('pointerup', stopDragging);
       frame.addEventListener('pointercancel', stopDragging);
       frame.addEventListener('lostpointercapture', () => {
         dragging = false;
+        activePointerId = null;
         frame.classList.remove('is-dragging');
       });
       update();
@@ -160,26 +197,32 @@
           update();
           return;
         }
-        const from = Number(control.value) || 28;
+        const from = clampValue(control.value, 8);
         const startedAt = performance.now();
-        const duration = 880;
+        const duration = 1080;
+        frame.classList.add('is-intro');
         const step = (now) => {
           if (hasInteracted) return;
           const progress = Math.min(1, (now - startedAt) / duration);
-          const eased = 1 - Math.pow(1 - progress, 4);
+          const eased = progress * progress * (3 - (2 * progress));
           control.value = String(Math.round(from + (50 - from) * eased));
           update();
-          if (progress < 1) animationFrame = requestAnimationFrame(step);
+          if (progress < 1) {
+            animationFrame = requestAnimationFrame(step);
+          } else {
+            animationFrame = 0;
+            frame.classList.remove('is-intro');
+          }
         };
         animationFrame = requestAnimationFrame(step);
       };
 
       if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(([entry]) => {
+        observer = new IntersectionObserver(([entry]) => {
           if (!entry.isIntersecting) return;
           observer.disconnect();
           window.setTimeout(animateToCenter, 180);
-        }, { threshold: 0.32 });
+        }, { threshold: 0.28 });
         observer.observe(frame);
       } else {
         window.setTimeout(animateToCenter, 220);

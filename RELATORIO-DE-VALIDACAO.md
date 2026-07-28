@@ -1,11 +1,11 @@
 # Relatório de validação — Carthage
 
-Validação executada em 27 de julho de 2026 sobre a versão 9 desta pasta.
+Validação executada em 28 de julho de 2026 sobre a versão 12 desta pasta.
 
 ## Resultado
 
 - **22 páginas HTML verificadas**, incluindo homepage, soluções, serviços, portfólio, estudo de caso, contato, páginas legais e as três novas experiências responsivas.
-- **Links e mídias locais:** 1.499 referências verificadas; todos os destinos locais referenciados existem.
+- **Links e mídias locais:** 1.361 referências locais presentes no HTML foram verificadas; todos os destinos referenciados existem.
 - **Assets:** CSS, JavaScript, SVGs, imagens, favicons e manifesto referenciados foram encontrados.
 - **Imagens:** elementos públicos possuem texto alternativo e dimensões declaradas.
 - **Semântica:** uma única região `main` e um único `h1` por página; tags estruturais balanceadas.
@@ -21,7 +21,7 @@ Validação executada em 27 de julho de 2026 sobre a versão 9 desta pasta.
 - **Revelação durante a rolagem:** um teste dedicado manteve um bloco abaixo da dobra no estado `queued`, revelou apenas o conteúdo inicialmente visível e confirmou a entrada do bloco seguinte após um evento real de rolagem. O motor também possui fallback por `requestAnimationFrame` para navegadores ou situações em que o observador não dispare como esperado.
 - **Movimento responsável:** megamenu, revelações, profundidade, luz contextual e magnetismo possuem fallback explícito para `prefers-reduced-motion`, sem ocultar conteúdo nem deslocar o painel.
 - **Teste comportamental do DOM:** abertura por hover, troca direta entre categorias, fechamento temporizado, fundo contextual, menu mobile, acordeões e estado de movimento reduzido foram executados sem falhas no teste automatizado incluído no fluxo de QA.
-- **Teste integrado da versão 9:** 38 verificações adicionais foram aprovadas, cobrindo seletores por cursor, exclusividade de painel, fechamento após `pointerleave`, sincronização com o campo nativo, sugestões de prazo, diagnóstico, comparador nos limites de 0%/100%, persistência, preferências de interface, pausa de vídeo e atualização do rodapé.
+- **Teste integrado da versão 12:** 42 verificações adicionais foram aprovadas, cobrindo seletores por cursor, exclusividade de painel, fechamento após `pointerleave`, sincronização com o campo nativo, sugestões de prazo, diagnóstico, comparador nos limites de 0%/100%, recorte dos rótulos por camada, persistência, preferências de interface, pausa de vídeo, Facebook e atualização do rodapé.
 - **SEO:** títulos, descrições, canonical e metadados essenciais verificados.
 - **Experiências responsivas:** `responsividade-desktop.html`, `responsividade-tablet.html` e `responsividade-celular.html` possuem título, descrição, canonical, um único `h1`, imagens reais, diagramas semânticos, critérios técnicos, links cruzados e CTAs válidos. Tablet e celular usam capturas independentes do projeto publicado em 768 × 1024 px e 390 × 844 px @2x, sem recorte da mídia desktop.
 - **Conteúdo comercial:** a homepage e a página de soluções distinguem sites, portais, sistemas, SaaS, aplicativos/PWA, dados, APIs, integrações e automações; a faixa de referência foi padronizada para **R$ 925–R$ 1.499**, com ressalvas de escopo e custos externos.
@@ -36,12 +36,16 @@ Validação executada em 27 de julho de 2026 sobre a versão 9 desta pasta.
 - **Formulários:** os dois formulários usam o mesmo componente de seleção estilizado, preservam o `<select>` nativo para envio e validação, permitem teclado e foco, oferecem prazo editável com seis referências rápidas e usam uma confirmação visual própria sem retângulo de foco incorreto.
 - **Demonstração por dispositivo:** desktop, tablet e celular carregam arquivos distintos e texto alternativo próprio; a troca atualiza moldura, proporção, mídia, estado selecionado e descrição ao vivo.
 - **Ilustrações sem ruído textual:** quatro peças foram revisadas visualmente em resolução original. Não incluem marca, nome da empresa, textos pequenos incorporados, falsos botões ou promessa de resultado.
-- **Comparador honesto:** o estado anterior é identificado como mapa estrutural anterior ao design, e o estado posterior usa a interface real publicada; o divisor possui controle por faixa, ponteiro e teclado.
-- **Comparador estável:** imagens não podem ser selecionadas ou arrastadas pelo navegador, o divisor permanece no limite escolhido e o estado anterior é um protótipo estrutural próprio em HTML/CSS, sem alegar a existência de um site antigo.
+- **Comparador honesto:** o estado anterior é identificado como uma simulação didática de teste local no navegador, com HTML disponível e parte dos estilos ausente; o estado posterior usa a interface real publicada.
+- **Comparador estável:** imagens não podem ser selecionadas ou arrastadas pelo navegador; o ponteiro é limitado entre 0% e 100%, o divisor permanece no extremo escolhido e a animação inicial percorre uma única vez o intervalo de 8% a 50%, sem pulsação ou retorno automático.
+- **Rótulos do comparador:** as camadas anterior e posterior usam recortes complementares; seus rótulos são ocultados quando a região visível fica menor que o espaço necessário e não atravessam o divisor.
 - **Formulários por cursor e teclado:** cada seletor abre por passagem do mouse em dispositivos compatíveis, fecha ao sair, substitui qualquer painel anterior e mantém clique, toque, foco, setas e `Escape`.
 - **Central de escolhas:** tema, contraste, escala de texto, densidade, redução de movimento e autoplay foram exercitados no DOM; as mudanças são aplicadas de imediato e armazenadas localmente apenas quando a categoria de preferências é ativada.
 - **Conteúdo legal:** as três páginas legais foram expandidas e continuam com exatamente um `main`, um `h1`, IDs únicos e links internos válidos.
-- **Rodapé:** o contato institucional é identificado como WhatsApp, e o link de Facebook é inserido após Instagram em todas as páginas que usam o rodapé completo.
+- **Contato e rodapé:** o contato institucional é identificado como WhatsApp; a página de contato inclui o canal oficial **Carthage Inc no Facebook**, e o link de Facebook é inserido após Instagram em todas as páginas que usam o rodapé completo.
+- **Presença digital:** o núcleo “Presença própria” contém quatro módulos semânticos e uma rota operacional; o protocolo seguinte contém cinco etapas completas, com ícones, responsabilidades, entregáveis e continuidade.
+- **Presença digital responsiva:** o núcleo e seus quatro módulos respondem à largura interna do próprio painel. Na coluna lateral do hero, o resumo permanece horizontal e os ativos formam uma malha 2 × 2; abaixo de 330 px internos, o conjunto passa a uma coluna. Ícones, títulos, descrições e marcadores mantêm largura mínima flexível, sem corte horizontal nem palavras espremidas.
+- **Geometria dos formulários:** a lista de cada seletor personalizado permanece ancorada ao gatilho correspondente, sem herdar a altura de outro campo na mesma linha da grade.
 
 ## Rotas críticas testadas
 

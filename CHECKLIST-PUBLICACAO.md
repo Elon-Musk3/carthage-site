@@ -25,5 +25,5 @@
 - [ ] Com movimento reduzido ativado, confirmar que nenhum texto fica transparente, borrado ou deslocado e que profundidade e magnetismo são desativados.
 - [ ] Manter `aplicativo.html` fora da navegação e do sitemap enquanto não existir produto real.
 - [ ] Abrir a Central de escolhas e testar tema, contraste, texto ampliado, densidade compacta, redução de movimento e autoplay desligado; atualizar a página e conferir a persistência.
-- [ ] Confirmar o endereço público definitivo da página do Facebook antes do lançamento.
+- [x] Endereço público da página **Carthage Inc** no Facebook confirmado e configurado.
 - [ ] Revisar políticas com profissional jurídico responsável.

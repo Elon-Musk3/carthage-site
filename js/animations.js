@@ -55,6 +55,8 @@
     '.principle-stage',
     '.ecosystem-map',
     '.ecosystem-flow',
+    '.presence-system',
+    '.presence-journey',
     '.funnel-visual',
     '.process-timeline',
     '.experience-device',

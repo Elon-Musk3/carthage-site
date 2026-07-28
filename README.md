@@ -1,6 +1,6 @@
-# Carthage — site revisado · versão 9
+# Carthage — site revisado · versão 12
 
-Versão estática multipágina revisada em 27 de julho de 2026. A estrutura original de pastas e arquivos foi preservada; páginas, estilos, scripts, ícones e mídias foram refinados dentro dela.
+Versão estática multipágina revisada em 28 de julho de 2026. A estrutura original de pastas e arquivos foi preservada; páginas, estilos, scripts, ícones e mídias foram refinados dentro dela.
 
 ## Principais correções
 
@@ -28,17 +28,22 @@ Versão estática multipágina revisada em 27 de julho de 2026. A estrutura orig
 - o loop silencioso recebeu uma estratégia adicional de recuperação: autoplay, mudo, repetição, reprodução inline, fontes já declaradas no HTML, nova tentativa após restauração da página e nova tentativa silenciosa na primeira interação quando o navegador tiver bloqueado a carga inicial;
 - os dois formulários agora compartilham seletores próprios, navegáveis por teclado, com lista estilizada, foco visível e sincronização com o campo nativo; o prazo passou a aceitar texto livre e referências rápidas de 1–2, 7, 30, 60 ou mais de 60 dias;
 - a confirmação de privacidade recebeu uma caixa própria, sem o retângulo vertical provocado pelo foco do input nativo;
-- o diagnóstico visual de contato foi reconstruído com quatro cartões explicativos e ícones vetoriais; os três canais de contato foram realinhados e ganharam ícones com contraste e indicação externa coerentes;
+- o diagnóstico visual de contato foi reconstruído com quatro cartões explicativos e ícones vetoriais; WhatsApp, e-mail, Instagram e a página oficial **Carthage Inc** no Facebook foram realinhados e ganharam ícones com contraste e indicação externa coerentes;
 - textos de apoio, atributos e metadados deixaram de imitar botões: somente ações reais preservam aparência e comportamento de controle;
 - a demonstração de responsividade em `criacao-de-sites.html` passou a trocar entre três capturas independentes do projeto — desktop, tablet e celular — com moldura, proporção, texto de estado e seleção visível próprios;
 - as páginas de responsividade exibem o endereço clicável do projeto publicado, inclusive nas experiências de tablet e celular;
 - quatro ilustrações repetitivas ou com texto ilegível foram substituídas por composições sem logotipo, sem nome da Carthage, sem frases incorporadas e sem falsos controles; o significado é apresentado em legendas HTML externas e acessíveis;
-- o comparador de reformulação deixou de sugerir um “antes” fictício: ele confronta o mapa estrutural anterior ao design com a homepage real publicada e move o divisor de 28% para 50% na primeira entrada em tela, sem impedir arraste, teclado ou redução de movimento;
-- o comparador agora bloqueia a seleção e o arraste nativo das imagens, alcança 0% e 100%, permanece no limite escolhido e usa um protótipo estrutural construído em HTML/CSS para explicar honestamente a etapa anterior à interface publicada;
+- o comparador de reformulação deixou de sugerir um “antes” fictício: ele confronta uma simulação identificada de teste no navegador — HTML disponível e parte do acabamento visual ausente — com a homepage real publicada;
+- o divisor parte de 8% e percorre suavemente o quadro até 50% na primeira entrada em tela, sem pulsação concorrente; depois da primeira interação, passa ao controle integral do visitante;
+- o comparador bloqueia seleção e arraste nativo, limita matematicamente o ponteiro entre 0% e 100%, permanece exatamente no limite escolhido e continua acessível por faixa e teclado;
+- as camadas e os rótulos do comparador agora compartilham o mesmo recorte; “Antes” e “Depois” desaparecem quando sua área deixa de comportá-los e nenhum texto de uma etapa vaza sobre a imagem oposta;
 - os seletores dos formulários também respondem a `hover` em dispositivos com cursor preciso: a categoria entra com transição curta, fecha ao retirar o ponteiro e nunca deixa dois painéis abertos simultaneamente; toque, clique e teclado continuam independentes do comportamento de cursor;
 - diagramas antes compostos por caixas vazias foram substituídos por mapas editoriais com ícones, numeração, responsabilidades, entregáveis e relações legíveis nas páginas de Soluções e Presença digital;
+- a arquitetura de **Presença própria** foi reconstruída como um painel editorial com núcleo, quatro ativos documentados e rota operacional; o fluxo de cinco etapas agora explica responsabilidade, saída e continuidade em vez de exibir formas geométricas vazias;
+- o painel de **Presença própria** passou a responder à largura real da coluna do hero, não apenas à largura geral da janela: o núcleo ocupa um resumo horizontal compacto, os quatro ativos formam uma malha 2 × 2 legível e, quando o próprio componente fica estreito, migram para uma coluna sem cortar ícones, palavras ou cartões;
 - o diagnóstico de soluções passou a apresentar justificativa, quatro entregáveis e uma ação específica para cada uma das seis situações, evitando um botão genérico que retornava à própria página;
-- os três canais de contato receberam uma malha fixa para centralização dos ícones, alinhamento do texto e indicador externo; o rodapé diferencia explicitamente **Contato pelo WhatsApp** e inclui Facebook logo após Instagram;
+- os quatro canais da página de contato receberam uma malha fixa para centralização dos ícones, alinhamento do texto e indicador externo; o rodapé diferencia explicitamente **Contato pelo WhatsApp** e inclui Facebook logo após Instagram;
+- os seletores personalizados permanecem ancorados imediatamente abaixo do respectivo campo mesmo quando outro campo da mesma linha aumenta a altura da grade;
 - a Central de Privacidade deixou de ser uma coleção de chaves sem efeito: tema, contraste, tamanho do texto, densidade, intensidade de movimento e reprodução automática agora são aplicados imediatamente e persistidos localmente quando autorizados;
 - Política de Privacidade, Política de Cookies e Termos de Uso foram ampliados com bases, finalidades, retenção, fornecedores, transferências, segurança, direitos, tecnologias, escopo, preços de referência, alterações, propriedade intelectual, serviços externos e versionamento próprios da operação descrita pela Carthage;
 - as páginas legais usam uma composição tipográfica mais densa, tabelas, notas e chamadas de atenção sem sacrificar legibilidade, navegação por títulos ou adaptação para telas menores;
