@@ -1,4 +1,4 @@
-# Carthage — site revisado · versão 17
+# Carthage — site revisado · versão 18
 
 Versão estática multipágina revisada em 28 de julho de 2026. A estrutura original de pastas e arquivos foi preservada; páginas, estilos, scripts, ícones e mídias foram refinados dentro dela.
 
@@ -14,6 +14,7 @@ Versão estática multipágina revisada em 28 de julho de 2026. A estrutura orig
 - o menu mobile agora abre sempre a partir de **Soluções**, mantém o cabeçalho completo visível mesmo depois de a página ter sido rolada, preserva a posição de leitura e usa uma camada externa que permite fechá-lo ao tocar fora;
 - abrir e fechar o painel não altera mais o contêiner de rolagem de forma incompatível com o cabeçalho `sticky`; posição, largura e área útil são calculadas novamente conforme viewport, barra do navegador e orientação do aparelho;
 - ao fechar o painel no meio de uma página, a posição anterior é restaurada de forma instantânea e confirmada após a recomposição da viewport móvel, sem retorno indevido ao topo;
+- o toque no fundo do menu móvel agora é consumido integralmente antes de o painel desaparecer: ele fecha somente o menu, preserva a rolagem e não pode ativar links, botões ou CTAs posicionados atrás da camada;
 - botão de menu, toque externo, links, `Escape`, mudança de orientação, retorno do histórico e restauração da página fecham e limpam o mesmo estado compartilhado, evitando painel solto, conteúdo bloqueado ou acordeões presos;
 - a navegação móvel recebeu diálogo identificado, foco contido, indicadores sincronizados, rolagem interna com contenção e áreas seguras para aparelhos com recortes de tela;
 - a transição entre páginas é removida de qualquer entrada preservada no histórico em `pageshow`, `pagehide` e `popstate`; o botão Voltar do navegador não pode mais restaurar indefinidamente a tela de carregamento;

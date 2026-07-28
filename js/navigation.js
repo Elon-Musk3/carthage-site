@@ -405,7 +405,14 @@
     mobilePanel.setAttribute('aria-modal', 'true');
     mobilePanel.setAttribute('aria-label', 'Navegação principal');
     mobileToggle.addEventListener('click', () => setMobileOpen(!mobileIsOpen));
-    mobileScrim.addEventListener('click', () => setMobileOpen(false, { resetAccordions: true }));
+    mobileScrim.addEventListener('pointerdown', (event) => {
+      event.stopPropagation();
+    });
+    mobileScrim.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      setMobileOpen(false, { resetAccordions: true });
+    });
 
     document.querySelectorAll('[data-mobile-accordion]').forEach((button) => {
       button.addEventListener('click', () => {
@@ -427,10 +434,16 @@
       });
     });
 
-    document.addEventListener('pointerdown', (event) => {
-      if (!mobileIsOpen || mobilePanel.contains(event.target) || header?.contains(event.target)) return;
+    document.addEventListener('click', (event) => {
+      if (!mobileIsOpen) return;
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (target === mobileScrim || mobilePanel.contains(target) || mobileToggle.contains(target)) return;
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
       setMobileOpen(false, { resetAccordions: true });
-    });
+    }, true);
 
     mobilePanel.addEventListener('keydown', (event) => {
       if (event.key !== 'Tab' || mobilePanel.hidden) return;
