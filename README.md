@@ -1,4 +1,4 @@
-# Carthage — site revisado · versão 15
+# Carthage — site revisado · versão 16
 
 Versão estática multipágina revisada em 28 de julho de 2026. A estrutura original de pastas e arquivos foi preservada; páginas, estilos, scripts, ícones e mídias foram refinados dentro dela.
 
@@ -11,6 +11,11 @@ Versão estática multipágina revisada em 28 de julho de 2026. A estrutura orig
 - menus de **Soluções**, **Projetos** e **Carthage** usam dois estados de movimento: a primeira abertura distribui os itens em sequência curta; ao atravessar diretamente para outra categoria, o conjunto anterior se apaga enquanto o novo o substitui no mesmo painel, sem repetir a distribuição inicial;
 - o menu aberto cria uma camada contextual discreta sobre a página, enquanto o cabeçalho reduz sua altura de forma fluida após a rolagem, preservando acesso e legibilidade;
 - o megamenu continua disponível por cursor, clique, foco, setas, `Escape` e toque; no mobile permanece como acordeão e, com redução de movimento ativada, todas as transições decorativas são removidas;
+- o menu mobile agora abre sempre a partir de **Soluções**, mantém o cabeçalho completo visível mesmo depois de a página ter sido rolada, preserva a posição de leitura e usa uma camada externa que permite fechá-lo ao tocar fora;
+- abrir e fechar o painel não altera mais o contêiner de rolagem de forma incompatível com o cabeçalho `sticky`; posição, largura e área útil são calculadas novamente conforme viewport, barra do navegador e orientação do aparelho;
+- botão de menu, toque externo, links, `Escape`, mudança de orientação, retorno do histórico e restauração da página fecham e limpam o mesmo estado compartilhado, evitando painel solto, conteúdo bloqueado ou acordeões presos;
+- a navegação móvel recebeu diálogo identificado, foco contido, indicadores sincronizados, rolagem interna com contenção e áreas seguras para aparelhos com recortes de tela;
+- a transição entre páginas é removida de qualquer entrada preservada no histórico em `pageshow`, `pagehide` e `popstate`; o botão Voltar do navegador não pode mais restaurar indefinidamente a tela de carregamento;
 - formulários alterados para `POST`, com tratamento local e descrição transparente do encaminhamento ao WhatsApp;
 - FAQs aprofundadas, hierarquia semântica e landmarks legais corrigidos;
 - rolagem por âncora, transições, foco do menu mobile, redução de movimento e carregamento progressivo aprimorados;

@@ -5,6 +5,10 @@
 - [ ] Substituir os arquivos preservando a estrutura de pastas.
 - [ ] Testar as 20 rotas públicas do sitemap, a rota de compatibilidade do aplicativo, a página 404, links internos e âncoras.
 - [ ] Testar menu, FAQs, formulários, WhatsApp e retorno de foco por teclado.
+- [ ] No celular, abrir o menu no topo e depois de rolar a página; confirmar que cabeçalho, marca, botão de fechar e **Soluções** permanecem visíveis e alinhados.
+- [ ] Fechar o menu mobile pelo botão, tocando fora e escolhendo um link; confirmar que a página volta exatamente à posição de rolagem anterior.
+- [ ] Navegar por pelo menos três páginas no celular e usar Voltar/Avançar do navegador; confirmar que nenhuma tela de carregamento ou menu antigo permanece preso.
+- [ ] Girar o aparelho com o menu aberto e testar também a mudança de altura provocada pela barra do navegador; confirmar que o painel fecha com segurança e reabre dentro da área visível.
 - [ ] Percorrer rapidamente Soluções → Projetos → Carthage no desktop e confirmar que somente a primeira categoria distribui itens; as seguintes devem substituir o conteúdo sem novo escalonamento.
 - [ ] Conferir revelações de textos, cartões e mídias ao descer e subir a página, sem saltos de layout.
 - [ ] Abrir `responsividade-desktop.html`, `responsividade-tablet.html` e `responsividade-celular.html` pelos três cartões da homepage e conferir links cruzados, imagens, diagramas e CTA final.

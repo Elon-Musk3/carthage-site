@@ -57,7 +57,13 @@
   .brand img { width: 44px; border-radius: 12px; }
   .brand span { font-size: .96rem; }
   .header-cta { display: none; }
-  .mobile-menu { top: 82px; right: 8px; left: 8px; max-height: calc(100dvh - 94px); }
+  .mobile-menu {
+    top: var(--mobile-menu-top, 82px);
+    right: max(8px, env(safe-area-inset-right));
+    left: max(8px, env(safe-area-inset-left));
+    max-height: var(--mobile-menu-height, calc(100dvh - 94px));
+    padding-bottom: max(14px, env(safe-area-inset-bottom));
+  }
   .hero { min-height: auto; padding-top: 86px; }
   .hero__inner { gap: 34px; }
   .hero-case-proof { grid-template-columns: 1fr; }

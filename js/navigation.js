@@ -18,6 +18,10 @@
   let activeMegaRoot = null;
   let lastFocusedBeforeMobile = null;
   let suppressMegaFocusOpen = false;
+  let mobileScrim = null;
+  let mobileIsOpen = false;
+  let lockedScrollY = 0;
+  let transitionNavigationTimer = 0;
 
   const setHeaderState = () => header?.classList.toggle('is-scrolled', window.scrollY > 18);
 
@@ -186,15 +190,88 @@
     megaCloseTimers.set(root, timer);
   };
 
-  const setMobileOpen = (open) => {
+  const syncMobileGeometry = () => {
+    if (!header || !mobilePanel) return;
+    const rect = header.getBoundingClientRect();
+    const viewportHeight = window.visualViewport?.height || window.innerHeight;
+    const panelTop = Math.max(8, Math.ceil(rect.bottom + 8));
+    const availableHeight = Math.max(180, Math.floor(viewportHeight - panelTop - 8));
+    const rootStyle = document.documentElement.style;
+    rootStyle.setProperty('--mobile-header-top', `${Math.max(0, Math.round(rect.top))}px`);
+    rootStyle.setProperty('--mobile-header-left', `${Math.max(0, Math.round(rect.left))}px`);
+    rootStyle.setProperty('--mobile-header-width', `${Math.round(rect.width)}px`);
+    rootStyle.setProperty('--mobile-menu-top', `${panelTop}px`);
+    rootStyle.setProperty('--mobile-menu-height', `${availableHeight}px`);
+  };
+
+  const resetMobileAccordions = () => {
+    document.querySelectorAll('[data-mobile-accordion]').forEach((button) => {
+      const target = document.getElementById(button.getAttribute('aria-controls'));
+      if (target) target.hidden = true;
+      button.setAttribute('aria-expanded', 'false');
+      const indicator = button.querySelector('[aria-hidden="true"], span:last-child');
+      if (indicator) indicator.textContent = '+';
+    });
+  };
+
+  const clearMobileGeometry = () => {
+    const rootStyle = document.documentElement.style;
+    [
+      '--menu-scroll-offset',
+      '--mobile-header-top',
+      '--mobile-header-left',
+      '--mobile-header-width',
+      '--mobile-menu-top',
+      '--mobile-menu-height'
+    ].forEach((property) => rootStyle.removeProperty(property));
+  };
+
+  const setMobileOpen = (
+    open,
+    {
+      restoreFocus = true,
+      restoreScroll = true,
+      resetAccordions = false
+    } = {}
+  ) => {
     if (!mobilePanel || !mobileToggle) return;
-    if (open) closeMegaMenus({ immediate: true });
-    if (open) lastFocusedBeforeMobile = document.activeElement;
-    mobilePanel.hidden = !open;
-    mobileToggle.setAttribute('aria-expanded', String(open));
-    document.documentElement.classList.toggle('menu-open', open);
-    if (open) mobilePanel.querySelector('a, button')?.focus({ preventScroll: true });
-    else if (lastFocusedBeforeMobile instanceof HTMLElement) lastFocusedBeforeMobile.focus({ preventScroll: true });
+    const wasOpen = mobileIsOpen || !mobilePanel.hidden || document.documentElement.classList.contains('menu-open');
+
+    if (open) {
+      closeMegaMenus({ immediate: true });
+      lastFocusedBeforeMobile = document.activeElement;
+      lockedScrollY = window.scrollY;
+      syncMobileGeometry();
+      document.documentElement.style.setProperty('--menu-scroll-offset', `${-lockedScrollY}px`);
+      mobilePanel.scrollTop = 0;
+      mobilePanel.hidden = false;
+      if (mobileScrim) mobileScrim.hidden = false;
+      mobileToggle.setAttribute('aria-expanded', 'true');
+      mobileToggle.setAttribute('aria-label', 'Fechar menu');
+      document.documentElement.classList.add('menu-open');
+      mobileIsOpen = true;
+      window.requestAnimationFrame(() => {
+        if (!mobileIsOpen) return;
+        syncMobileGeometry();
+        mobilePanel.scrollTop = 0;
+        mobilePanel.focus({ preventScroll: true });
+      });
+      return;
+    }
+
+    mobileIsOpen = false;
+    mobilePanel.hidden = true;
+    if (mobileScrim) mobileScrim.hidden = true;
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    mobileToggle.setAttribute('aria-label', 'Abrir menu');
+    document.documentElement.classList.remove('menu-open');
+    if (resetAccordions) resetMobileAccordions();
+    clearMobileGeometry();
+
+    if (wasOpen && restoreScroll) window.scrollTo(0, lockedScrollY);
+    if (wasOpen && restoreFocus && lastFocusedBeforeMobile instanceof HTMLElement && lastFocusedBeforeMobile.isConnected) {
+      lastFocusedBeforeMobile.focus({ preventScroll: true });
+    }
   };
 
   const initMegaMenu = () => {
@@ -256,7 +333,23 @@
   };
 
   const initMobileMenu = () => {
-    mobileToggle?.addEventListener('click', () => setMobileOpen(mobilePanel?.hidden));
+    if (!mobilePanel || !mobileToggle) return;
+
+    mobileScrim = document.createElement('button');
+    mobileScrim.type = 'button';
+    mobileScrim.className = 'mobile-menu-scrim';
+    mobileScrim.tabIndex = -1;
+    mobileScrim.setAttribute('aria-label', 'Fechar menu');
+    mobileScrim.hidden = true;
+    mobilePanel.before(mobileScrim);
+
+    mobilePanel.setAttribute('tabindex', '-1');
+    mobilePanel.setAttribute('role', 'dialog');
+    mobilePanel.setAttribute('aria-modal', 'true');
+    mobilePanel.setAttribute('aria-label', 'Navegação principal');
+    mobileToggle.addEventListener('click', () => setMobileOpen(!mobileIsOpen));
+    mobileScrim.addEventListener('click', () => setMobileOpen(false, { resetAccordions: true }));
+
     document.querySelectorAll('[data-mobile-accordion]').forEach((button) => {
       button.addEventListener('click', () => {
         const target = document.getElementById(button.getAttribute('aria-controls'));
@@ -264,18 +357,50 @@
         const open = target.hidden;
         target.hidden = !open;
         button.setAttribute('aria-expanded', String(open));
+        const indicator = button.querySelector('[aria-hidden="true"], span:last-child');
+        if (indicator) indicator.textContent = open ? '−' : '+';
       });
     });
-    mobilePanel?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMobileOpen(false)));
-    mobilePanel?.addEventListener('keydown', (event) => {
+    mobilePanel.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMobileOpen(false, { restoreFocus: false, resetAccordions: true }));
+    });
+    header?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (mobileIsOpen) setMobileOpen(false, { restoreFocus: false, resetAccordions: true });
+      });
+    });
+
+    document.addEventListener('pointerdown', (event) => {
+      if (!mobileIsOpen || mobilePanel.contains(event.target) || header?.contains(event.target)) return;
+      setMobileOpen(false, { resetAccordions: true });
+    });
+
+    mobilePanel.addEventListener('keydown', (event) => {
       if (event.key !== 'Tab' || mobilePanel.hidden) return;
-      const focusable = [...mobilePanel.querySelectorAll('a,button:not([disabled])')].filter((item) => !item.hidden);
+      const focusable = [...mobilePanel.querySelectorAll('a,button:not([disabled])')]
+        .filter((item) => !item.closest('[hidden]'));
       if (!focusable.length) return;
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      if (event.shiftKey && (document.activeElement === first || document.activeElement === mobilePanel)) {
+        event.preventDefault();
+        last.focus();
+      }
       else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
     });
+
+    const handleViewportChange = () => {
+      if (window.innerWidth > 1080) {
+        setMobileOpen(false, { restoreFocus: false, resetAccordions: true });
+        return;
+      }
+      if (mobileIsOpen) syncMobileGeometry();
+    };
+    window.addEventListener('resize', handleViewportChange, { passive: true });
+    window.addEventListener('orientationchange', () => {
+      setMobileOpen(false, { restoreFocus: false, resetAccordions: true });
+    }, { passive: true });
+    window.visualViewport?.addEventListener('resize', handleViewportChange, { passive: true });
   };
 
   const initSmoothAnchors = () => {
@@ -316,9 +441,48 @@
     });
   };
 
+  const resetPageTransition = () => {
+    if (!transition) return;
+    window.clearTimeout(transitionNavigationTimer);
+    transitionNavigationTimer = 0;
+    transition.classList.remove('is-leaving');
+    transition.classList.add('is-ready');
+  };
+
+  const resetRestoredPage = () => {
+    closeMegaMenus({ immediate: true });
+    setMobileOpen(false, {
+      restoreFocus: false,
+      restoreScroll: true,
+      resetAccordions: true
+    });
+    resetPageTransition();
+    setHeaderState();
+  };
+
+  const initPageLifecycle = () => {
+    window.addEventListener('pageshow', () => window.requestAnimationFrame(resetRestoredPage));
+    window.addEventListener('popstate', resetRestoredPage);
+    window.addEventListener('pagehide', () => {
+      window.clearTimeout(transitionNavigationTimer);
+      transitionNavigationTimer = 0;
+      transition?.classList.remove('is-leaving');
+      transition?.classList.add('is-ready');
+      setMobileOpen(false, {
+        restoreFocus: false,
+        restoreScroll: false,
+        resetAccordions: true
+      });
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') resetPageTransition();
+    });
+  };
+
   const initPageTransitions = () => {
-    if (!transition || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    requestAnimationFrame(() => transition.classList.add('is-ready'));
+    if (!transition) return;
+    resetPageTransition();
+    if (reducedMotion.matches) return;
     document.addEventListener('click', (event) => {
       const link = event.target.closest('a[href]');
       if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -328,7 +492,10 @@
       if (!sameOrigin || samePageHash || link.target === '_blank' || link.hasAttribute('download') || link.dataset.noTransition !== undefined) return;
       event.preventDefault();
       transition.classList.add('is-leaving');
-      window.setTimeout(() => { window.location.href = url.href; }, 180);
+      transitionNavigationTimer = window.setTimeout(() => {
+        transitionNavigationTimer = 0;
+        window.location.assign(url.href);
+      }, 180);
     });
   };
 
@@ -371,6 +538,7 @@
   setHeaderState();
   initMegaMenu();
   initMobileMenu();
+  initPageLifecycle();
   initSmoothAnchors();
   initPrefetch();
   initActivePage();

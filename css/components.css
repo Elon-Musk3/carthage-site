@@ -247,6 +247,7 @@ html.mega-open body::after {
   border-radius: 50%;
   background: rgba(255,255,255,.05);
   cursor: pointer;
+  touch-action: manipulation;
 }
 .mobile-menu-toggle span, .mobile-menu-toggle::before, .mobile-menu-toggle::after {
   display: block;
@@ -260,19 +261,42 @@ html.mega-open body::after {
 .mobile-menu-toggle[aria-expanded="true"] span { opacity: 0; }
 .mobile-menu-toggle[aria-expanded="true"]::before { transform: translateY(6px) rotate(45deg); }
 .mobile-menu-toggle[aria-expanded="true"]::after { transform: translateY(-6px) rotate(-45deg); }
-.mobile-menu {
+.mobile-menu-scrim {
   position: fixed;
   z-index: 990;
-  top: 92px;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  background: rgba(1, 8, 20, .64);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  cursor: default;
+  touch-action: manipulation;
+}
+html.menu-open .mobile-menu-scrim {
+  opacity: 1;
+  animation: mobile-menu-scrim-in .24s ease both;
+}
+.mobile-menu {
+  position: fixed;
+  z-index: 1001;
+  top: var(--mobile-menu-top, 92px);
   right: 12px;
   left: 12px;
-  max-height: calc(100dvh - 106px);
+  max-height: var(--mobile-menu-height, calc(100dvh - 106px));
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-padding-top: 14px;
   padding: 14px;
   border: 1px solid var(--line-dark);
   border-radius: 26px;
   background: rgba(2, 11, 28, 0.98);
   box-shadow: var(--shadow-lg);
+  touch-action: pan-y;
 }
 html.menu-open .mobile-menu {
   animation: mobile-menu-distribute .34s var(--motion-ease-out) both;
@@ -289,6 +313,10 @@ html.menu-open .mobile-menu > *:nth-child(6) { animation-delay: 170ms; }
 @keyframes mobile-menu-distribute {
   from { opacity: 0; transform: translateY(-12px) scale(.985); }
   to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes mobile-menu-scrim-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 @keyframes mobile-menu-item-in {
   from { opacity: 0; filter: blur(2px); transform: translateY(-8px); }
@@ -309,6 +337,13 @@ html.menu-open .mobile-menu > *:nth-child(6) { animation-delay: 170ms; }
   text-align: left;
 }
 .mobile-accordion { cursor: pointer; }
+.mobile-accordion > span:last-child {
+  width: 24px;
+  color: var(--mint);
+  font-size: 1.22rem;
+  font-weight: 520;
+  text-align: center;
+}
 .mobile-menu__sub { display: grid; gap: 4px; padding: 4px 0 10px 14px; }
 .mobile-menu__sub a { min-height: 44px; color: var(--muted); font-size: .9rem; }
 .mobile-menu__sub:not([hidden]) a {

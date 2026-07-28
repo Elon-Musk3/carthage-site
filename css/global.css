@@ -342,9 +342,27 @@ html[data-interface-motion="reduced"] [data-motion-child] {
 }
 
 :target { scroll-margin-top: 118px; }
-html.menu-open { overflow: hidden; }
+html.menu-open,
+html.menu-open body {
+  overscroll-behavior: none;
+}
+html.menu-open body {
+  position: fixed;
+  top: var(--menu-scroll-offset, 0);
+  right: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+html.menu-open .site-header {
+  position: fixed;
+  z-index: 1002;
+  top: var(--mobile-header-top, 8px);
+  left: var(--mobile-header-left, 8px);
+  width: var(--mobile-header-width, calc(100% - 16px));
+  margin: 0;
+}
 
-@view-transition { navigation: auto; }
 ::view-transition-old(root) { animation: .22s ease both fade-out; }
 ::view-transition-new(root) { animation: .34s ease both fade-in; }
 @keyframes fade-out { to { opacity: 0; transform: translateY(-8px); } }
